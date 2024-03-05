@@ -15,6 +15,10 @@ import { SchedulesComponent } from './components/schedules/schedules.component';
 import { BarGraphComponent } from './components/charts/bar-graph/bar-graph.component';
 import { PieChartsComponent } from './components/charts/pie-charts/pie-charts.component';
 import { ChangePwdComponent } from './components/Popups/change-pwd/change-pwd.component';
+import { PatientComponent } from './components/patient/patient.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { MaterialModule } from './modules/materials/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,10 +35,14 @@ import { ChangePwdComponent } from './components/Popups/change-pwd/change-pwd.co
     BarGraphComponent,
     PieChartsComponent,
     ChangePwdComponent,
+    PatientComponent,
+    FooterComponent,
+    MaterialModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
