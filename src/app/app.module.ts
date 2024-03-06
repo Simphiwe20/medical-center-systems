@@ -20,6 +20,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { MaterialModule } from './modules/materials/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +38,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChangePwdComponent,
     PatientComponent,
     FooterComponent,
-    MaterialModule
+
+  
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
