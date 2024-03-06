@@ -17,8 +17,13 @@ import { PieChartsComponent } from './components/charts/pie-charts/pie-charts.co
 import { ChangePwdComponent } from './components/Popups/change-pwd/change-pwd.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { MaterialModule } from './modules/materials/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableComponent } from './components/table/table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -37,12 +42,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChangePwdComponent,
     PatientComponent,
     FooterComponent,
-    MaterialModule
+    TableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    FormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

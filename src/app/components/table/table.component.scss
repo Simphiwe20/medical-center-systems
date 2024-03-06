@@ -1,0 +1,51 @@
+.table {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.filter-box {
+    width: 400px;
+    height: 65px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.center-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.end-center {
+    justify-content: end;
+    align-items: center;
+}
+
+.gap-1em {
+    gap: 1em;
+}
+
+button {
+    margin-bottom: 20px;
+    width: 150px;
+    height: 56px !important;
+}
+button:hover{
+    background-color: aqua;
+    color: black;
+    border: 2px solid;
+    font-size: smaller;
+}
+
+::ng-deep .mdc-line-ripple {
+    display: none
+}
+
+.ng-tns-c15-0{
+    height: 100%;
+}
