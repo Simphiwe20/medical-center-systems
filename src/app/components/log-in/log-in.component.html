@@ -1,1 +1,44 @@
-<p>log-in works!</p>
+<div class="form-container">
+    <div class="form">
+      <h2 class="center">Login Form</h2>
+      <form [formGroup]="loginForm" class="">
+        <!-- email -->
+        <mat-form-field appearance="fill" class="input">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email" type="email" name="email" formControlName="email" required>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email address</mat-error>
+        </mat-form-field>
+  
+        <!-- role -->
+        <mat-form-field appearance="fill" class="input">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let role of roles" [value]="role">{{ role | titlecase }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="loginForm.get('role')?.hasError('required')">Role is required</mat-error>
+        </mat-form-field><br>
+  
+        <!-- password -->
+        <mat-form-field appearance="fill" class="input">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="password" type="password" name="password" formControlName="password" required>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password should have more than 4 characters</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">Maximum length of password should be 8 characters</mat-error>
+        </mat-form-field>
+  
+        <!-- buttons -->
+        <p class="center">Forgot <span routerLink="/forgotPassword" class="span"> password</span>?</p>
+        <div class="buttons center">
+          <button mat-raised-button [disabled]="loginForm.invalid" (click)="submit()" color="primary">
+            Submit
+          </button>
+          <button mat-raised-button (click)="resetForm()" color="warn">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
