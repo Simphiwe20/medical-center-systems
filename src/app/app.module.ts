@@ -18,6 +18,10 @@ import { ChangePwdComponent } from './components/Popups/change-pwd/change-pwd.co
 import { PatientComponent } from './components/patient/patient.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/materials/material/material.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TableComponent } from './components/table/table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
@@ -42,6 +46,7 @@ import {MatButtonModule} from '@angular/material/button';
     ChangePwdComponent,
     PatientComponent,
     FooterComponent,
+    ForgotPasswordComponent,
     TableComponent
   ],
   imports: [
@@ -52,7 +57,9 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     MatInputModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
