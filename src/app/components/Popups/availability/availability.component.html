@@ -1,1 +1,56 @@
-<p>availability works!</p>
+<div class="main-container full-height flex center-center">
+
+    <div>
+        <div class="example-button-container" matTooltip="Add availability">
+            <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="container full-height flex center-center column">
+        <p>Availability hours</p>
+        <small>Click once to add availability and twice to add unavailability</small>
+        <div class="full-height flex column">
+            <div class="flex gap05 center-center m-b-10" *ngFor="let day of days, let i = index" #timer>
+                <div class="flex end full-height">
+                    <div class="day-container flex center-center pointer"
+                        [ngStyle]="{'background-color': day.avail ? 'green': day.unavail ? 'red' : 'white'}"
+                        (click)="updateAvail(i)">
+                        <p>{{day.day.slice(0, 1)}}</p>
+                    </div>
+                </div>
+                <div *ngIf="(day.unavail)" class="unavail-p">
+                    <small>Unavailable</small>
+                </div>
+                <div class="flex gap05" *ngIf="day.avail || !day.avail && !day.unavail">
+                    <div class="flex column">
+                        <label for="start"><small>Start time</small></label>
+                        <input type="time" #start{{i}} name="startTime" [(ngModel)]="day.startTime"
+                            [disabled]="!day.avail && !day.unavail" value="08:00" id="start" min="09:00" max="18:00"
+                            required />
+                    </div>
+                    <div class="flex column">
+                        <label for="end"><small>End time</small></label>
+                        <input type="time" #endi{{i}} name="endTime" [(ngModel)]="day.endTime"
+                            [disabled]="!day.avail && !day.unavail" value="16:30" id="end" min="09:00" max="18:00"
+                            required />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="height-80">
+        <div *ngFor="let day of days, let i =index">
+            <p class="no-margin" name="day">{{day.day}}</p>
+            <div>
+                <input class="removeTimer" name="start" type="time" [(ngModel)]="day.startTime">
+                <input class="removeTimer" name="end" type="time" [(ngModel)]="day.endTime">
+            </div>
+        </div>
+
+    </div>
+</div>
