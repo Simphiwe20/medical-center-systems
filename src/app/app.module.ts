@@ -37,12 +37,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChangePwdComponent,
     PatientComponent,
     FooterComponent,
-    MaterialModule
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
