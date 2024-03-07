@@ -19,6 +19,7 @@ import { PatientComponent } from './components/patient/patient.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MaterialModule } from './modules/materials/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorsComponent } from './components/doctors/doctors.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChangePwdComponent,
     PatientComponent,
     FooterComponent,
+    DoctorsComponent,
   ],
   imports: [
     BrowserModule,
