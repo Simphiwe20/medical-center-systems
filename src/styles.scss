@@ -3,61 +3,19 @@
 
 
 
-html, body { height: 100%; }
-body { margin: 0;  
-    font-family: "Poppins", sans-serif; }
-
-
-// flex styles
-
-.flex {
-    display: flex;
-}
-
-.center-center {
-    justify-content: center;
-    align-items: center;
-}
-
-.spacebetween-center {
-    justify-content: space-between;
-    align-items: center;
-}
-
-.column {
-    flex-direction: column;
-}
-
-.center-start {
-    justify-content: center;
-}
-
-.gap05 {
-    gap: 0.5em
-}
-
-.gap-1 {
-    gap: 1em
-}
-
-// Size styles
-
-.full-width {
-    width: 100%;
-}
-
-.full-height {
+html,
+body {
     height: 100%;
+    width: 100%;
+    margin: unset;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.half-height {
-    height: 50%;
-}
-
-
-// Styling materials components
-
-.mat-mdc-form-field-subscript-wrapper {
-    height: 0;
+@import '~dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
+:host{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
