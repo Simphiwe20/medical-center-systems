@@ -1,1 +1,59 @@
-<p>profile works!</p>
+<div class="main-container full-height flex center-center ">
+    <div class="height-80 width-80 flex spacebetween-center">
+        <div class="flex gap05">
+            <div class="pic">
+                <img src="../../../assets/images/NemboLukni.png" alt="">
+            </div>
+            <div class="user-details ">
+                <div class="profile-details">
+                    <div>
+                        <p class="no-margin"><b>Dr Nembo Lukeni</b></p>
+                        <small>MBBS, DMRD</small><br>
+                        <small>Senior Specialist</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Specialization</p>
+                        <small>General Medicine</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Experience</p>
+                        <small>10+ years</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Availability</p>
+                        <small>Days</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Mobile number</p>
+                        <small>062 810 7203</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" width-25">
+            <div class="flex end-center">
+                <div class="flex gap05" matTooltip="Add availability" (click)="openDialog()">
+                    <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="height-80">
+                <div *ngFor="let day of days, let i =index">
+                    <p class="no-margin" name="day">{{day.day}}</p>
+                    <div *ngIf="(!day.unavail && !day.avail) || day.avail ">
+                        <input class="removeTimer" disabled [(ngModel)]="day.startTime" name="start" type="time" >
+                        <small class="p-l-10"> - </small>
+                        <input class="removeTimer" disabled  [(ngModel)]="day.endTime" name="end" type="time" >
+                    </div>
+                    <div *ngIf="day.unavail">
+                        <p class="unavail-p">Unavailable</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
