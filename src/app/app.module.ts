@@ -19,7 +19,8 @@ import { PatientComponent } from './components/patient/patient.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MaterialModule } from './modules/materials/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -38,15 +39,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChangePwdComponent,
     PatientComponent,
     FooterComponent,
-
-  
-  
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
