@@ -43,7 +43,6 @@ export class LogInComponent {
             sessionStorage.setItem('currentUser', JSON.stringify(foundUser));
 
             if (foundUser.role == "admin") { 
-                // this.router.navigate(["/admin-dashboard"]);
                 this.router.navigate(["/dashboard"]);
             } else if (foundUser.role == "doctor") { 
                 this.router.navigate(["/doctor-dashboard"]);

@@ -15,7 +15,7 @@ export class ForgotPasswordComponent {
 
   forgotPasswordForm: FormGroup;
 
-  constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar,private emailjs : EmailService) {
+  constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar, private emailService: EmailService) {
 
     this.forgotPasswordForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -23,7 +23,9 @@ export class ForgotPasswordComponent {
     })
   }
 
-  submit(form: any): void {
+
+
+  sendEmail(form: any): void {
     // Fetch all users
     let _users = localStorage.getItem('users');
     const users = _users ? JSON.parse(_users) : [];
@@ -31,10 +33,20 @@ export class ForgotPasswordComponent {
     if (this.forgotPasswordForm.valid) {
       // Check if user exists
       const foundUser = users.find((user: any) => user.email === this.forgotPasswordForm.controls["email"].value);
-      
+
       if (foundUser) {
         if (foundUser.id == this.forgotPasswordForm.controls["id"].value) {
-          this.snackBar.open(`Password: ${foundUser.password}`, "OK")  
+          
+
+          this.emailService.sendEmail(`${foundUser.email}`, 'Test Email', `Password${foundUser.password}`)
+            .then(response => {
+              console.log('Email sent successfully', response);
+              this.snackBar.open("Password has been sent to your email ", "OK")  
+              this.router.navigate(["/login"])
+            })
+            .catch(error => {
+              console.error('Error sending email', error);
+            })
         }
         else
           this.snackBar.open("ID invalid", "OK")

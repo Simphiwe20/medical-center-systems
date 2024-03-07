@@ -7,10 +7,16 @@ import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 export class EmailService {
 
   
-  constructor() {
-    emailjs.init('_Zqr577bBGjXaK5fQ');
-  }
-  sendEmail(templateId: string, emailParams: any): Promise<EmailJSResponseStatus> {
-    return emailjs.send('service_qcyibif', templateId, emailParams);
+  
+  constructor() { }
+
+  sendEmail(to: string, subject: string, message: string): Promise<EmailJSResponseStatus> {
+    const emailParams = {
+      to_email: to,
+      subject: subject,
+      message: message
+    };
+
+    return emailjs.send('service_qcyibif', 'template_ghl9rhc', emailParams, 'AC09qjYdVrapPhld6');
   }
 }
