@@ -1,1 +1,41 @@
-<p>change-pwd works!</p>
+<div class="flex center-center column full-height padding-1em">
+    <form [formGroup]="resetPasswordForm" class="full-width">
+        <h2>Change Your Password</h2>
+        <div class="flex gap">
+            <div>
+                <!-- New Password field -->
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Enter your new password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="newPassword">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="resetPasswordForm.get('newPassword')?.hasError('required')">
+                        new Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="resetPasswordForm.get('newPassword')?.hasError('minlength')">
+                        Name should at least have more than 4 charectors
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- confirm password -->
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Confirm password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="resetPasswordForm.get('confirmPassword')?.hasError('required')">
+                        Confirm Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="flex gap full-width">
+            <button mat-raised-button class="flex1" color="warn" (click)="changePassword()">Change Password</button>
+            <button mat-raised-button class="flex1" color="primary" (click)="close()">Cancel</button>
+        </div>
+    </form>
+</div>

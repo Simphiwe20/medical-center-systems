@@ -1,0 +1,61 @@
+h2,h3{
+    text-transform: uppercase;
+    text-align: center;
+}
+// form{
+//     background-color: #ede2e2;
+// }
+body{
+    width: 50%;
+}
+
+//size
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+// .width-60{
+//     // width: 60%;
+// }
+
+.full-height {
+    height: 100%;
+}
+
+.half-height {
+    height: 50%;
+}
+
+// Flex
+.flex {
+    display: flex;
+}
+.flex1{
+    flex: 1;
+}
+.center-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.space-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.gap {
+    gap: 0.5em;
+}
+
+//Padding
+
+.padding-1em{
+    padding: 1em;
+}
