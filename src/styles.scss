@@ -19,6 +19,11 @@ body { margin: 0;
     align-items: center;
 }
 
+.spacebetween-center {
+    justify-content: space-between;
+    align-items: center;
+}
+
 .column {
     flex-direction: column;
 }
@@ -48,6 +53,7 @@ body { margin: 0;
 .half-height {
     height: 50%;
 }
+
 
 // Styling materials components
 

@@ -1,15 +1,7 @@
-<div class="main-container full-height flex center-center">
-
-    <div>
-        <div class="example-button-container" matTooltip="Add availability">
-            <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
-                <mat-icon>add</mat-icon>
-            </button>
-        </div>
-    </div>
-
+<div class="main-container p-20 full-height flex center-center">
     <div class="container full-height flex center-center column">
-        <p>Availability hours</p>
+        <p class="close" (click)="close() ">X</p>
+        <p class="m-t-10">Availability</p>
         <small>Click once to add availability and twice to add unavailability</small>
         <div class="full-height flex column">
             <div class="flex gap05 center-center m-b-10" *ngFor="let day of days, let i = index" #timer>
@@ -41,16 +33,8 @@
             </div>
 
         </div>
-    </div>
-
-    <div class="height-80">
-        <div *ngFor="let day of days, let i =index">
-            <p class="no-margin" name="day">{{day.day}}</p>
-            <div>
-                <input class="removeTimer" name="start" type="time" [(ngModel)]="day.startTime">
-                <input class="removeTimer" name="end" type="time" [(ngModel)]="day.endTime">
-            </div>
-        </div>
-
+        <section class="flex end full-width">
+            <button mat-raised-button (click)="save()" color="accent">Save</button>
+        </section>
     </div>
 </div>
