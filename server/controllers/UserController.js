@@ -1,6 +1,8 @@
 
-const Doctor = require('../models/Doctor')
+const doctor = require('../models/doctor')
 const patient = require('../models/patient')
+const receptionist = require('../models/receptionist')
+
 // const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -8,6 +10,17 @@ module.exports = {
     defaultRoute: async (req, res) => {
         try {
             res.send(req);
+        } catch (error) {
+            res.status(500).send(error)
+        }
+    },
+    getPatient: async (req, res) => {
+        try {
+
+            const result = await patient.findAll(req.params)
+            // console.log(result)
+            console.log(req.params)
+            res.status(200).send(result)
         } catch (error) {
             res.status(500).send(error)
         }
@@ -35,16 +48,16 @@ module.exports = {
     addDoctor: async (req, res) => {
         try {
             let payload = { ...req.body };
-            const newDoctor = new Doctor(payload)
+            const newDoctor = new doctor(payload)
             const result = await newDoctor.save()
             res.send(result);
         } catch (error) {
             res.status(500).send(error)
         }
     },
-    getDoctor: async (req, res) => {
+    getReceptionist: async (req, res) => {
         try {
-            const result = await Doctor.findOne(req.params)
+            const result = await receptionist.findOne(req.params)
             console.log(result)
             console.log(req.params)
             res.status(200).send(result)
@@ -52,10 +65,10 @@ module.exports = {
             res.status(500).send(error)
         }
     },
-    addDoctor: async (req, res) => {
+    addReceptionist: async (req, res) => {
         try {
             let payload = { ...req.body };
-            const newDoctor = new Doctor(payload)
+            const newDoctor = new receptionist(payload)
             const result = await newDoctor.save()
             res.send(result);
         } catch (error) {

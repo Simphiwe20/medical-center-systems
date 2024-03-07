@@ -1,0 +1,15 @@
+@import '~dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
+:host{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.event-red {
+    background-color: red !important; /* You can customize the background color */
+  }
+  
+  .event-blue {
+    background-color: blue !important; /* You can customize the background color */
+  }
