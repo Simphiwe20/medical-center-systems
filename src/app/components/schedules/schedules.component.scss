@@ -13,3 +13,22 @@
   .event-blue {
     background-color: blue !important; /* You can customize the background color */
   }
+
+  html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: unset;
+}
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import '~dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
+:host{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}

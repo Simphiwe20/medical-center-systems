@@ -19,10 +19,8 @@ export class SchedulesComponent implements OnInit {
   events: any[] = [];
 
   ngOnInit() {
-    // Set labels for the section
     scheduler.locale.labels['section_select'] = 'Doctors';
 
-    // Configure lightbox sections
     scheduler.config.lightbox.sections = [
       { name: "Event description", height: 50, map_to: "text", type: "textarea", focus: true, color: 'red' },
       { name: "Doctor's name", height: 40, map_to: "Doctor_name", type: "select", options: this.alert_opts },
