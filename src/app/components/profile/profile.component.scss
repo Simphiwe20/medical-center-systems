@@ -1,85 +1,99 @@
-.title {
-    font-weight: 700;
-    font-size: 18px;
-    color: #333;
-    letter-spacing: .54px;
 
-}
-.end{
-    justify-content: flex-end;
+.day-container {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px grey solid;
 }
 
-.flex {
-    display: flex;
+.m-b-10 {
+    margin-top: 10px;
 }
 
-.center {
-    align-items: center;
+.times {
+    left: 200px
 }
 
-.center-center {
-    align-items: center;
-    justify-content: center;
+input {
+    height: 30px;
 }
 
-.btn {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1em;
+.end {
+    align-items: end;
 }
 
-.gap-2em {
-    gap: 2em;
+.pointer {
+    cursor: pointer;
 }
 
-.wrap {
-    flex-direction: column;
+.avail {
+    background-color: green;
 }
 
-.space-between {
-    align-items: center;
-    justify-content: space-between;
+.unavail {
+    background-color: red;
 }
 
-.space-around {
-    align-items: center;
-    justify-content: space-around;
-}
-
-.full-width {
-    width: 100%;
-}
-
-.half-width {
-    width: 50%;
-}
-
-.underline {
-    background: #7575FF;
-    border-radius: 5px;
-    width: 52px;
-    height: 4px;
-}
-
-.profile-img img {
-   
-        height: 100px;
-        width: 100px;
-        border-radius: 50px;
+.unavail-p {
+    color: red;
     
 }
 
-.user-details {
-    display: flex;
-    gap: 1em;
-    width: 100%;
-
-
+.no-margin {
+    margin: 0;
 }
-.add-btn{
-    border-radius: 50%;
-    border: #7575FF;
+
+.height-80 {
+    height: 80%;
 }
-.column{
-    flex-direction: column;
+
+.removeTimer {
+    &::-webkit-calendar-picker-indicator {
+    background: none;
+  }
+    border: none;
+    padding: 0;
+    // width: 30px;
+}
+
+.width-25 {
+    width: 25%;
+    button {
+        width: 33px;
+        height: 33px;
+    }
+}
+
+.end-center {
+    justify-content: end;
+    align-items: center;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.p-l-10 {
+    padding: 10px;
+    font-size: medium;
+}
+
+.unavail-p {
+    color: red;   
+}
+
+.pic {
+    img {
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+    }
 }

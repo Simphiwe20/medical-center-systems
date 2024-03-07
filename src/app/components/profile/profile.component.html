@@ -1,37 +1,59 @@
-<div class="profile-container">
-    <div class="flex center">
-        <span class="material-symbols-outlined">
-            arrow_back_ios
-        </span>
-        <h1 class="title">Users Details</h1>
-    </div>
-    <div class="underline"></div>
-    <div class="btn">
-        <button mat-raised-button color="warn"> Delete</button>
-        <button mat-raised-button color="primary">Edit</button>
-    </div>
-    <div class="user-details ">
-        <div class="profile-img">
-            <img src="../../../assets/images/istockphoto.jpg" alt="">
+<div class="main-container full-height flex center-center ">
+    <div class="height-80 width-80 flex spacebetween-center">
+        <div class="flex gap05">
+            <div class="pic">
+                <img src="../../../assets/images/NemboLukni.png" alt="">
+            </div>
+            <div class="user-details ">
+                <div class="profile-details">
+                    <div>
+                        <p class="no-margin"><b>Dr Nembo Lukeni</b></p>
+                        <small>MBBS, DMRD</small><br>
+                        <small>Senior Specialist</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Specialization</p>
+                        <small>General Medicine</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Experience</p>
+                        <small>10+ years</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Availability</p>
+                        <small>Days</small>
+                    </div>
+                    <div class="m-t-10">
+                        <p class="no-margin">Mobile number</p>
+                        <small>062 810 7203</small>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="profile-details">
-            <p><b class="title">ID :</b>0987654323456789</p>
-            <p><b class="title">Name and Surname :</b>qwert wertyuio</p>
-            <p><b class="title">Gender :</b>sdfgh </p>
-            <p><b class="title">Blood Group :</b>00bv+</p>
-            <p><b class="title">Symptoms :</b>Smoking weed</p>
-            <p><b class="title">Mobile Number :</b>1011</p>
-            <p><b class="title">Email :</b>ytrertyrwsdfghjk</p>
+        <div class=" width-25">
+            <div class="flex end-center">
+                <div class="flex gap05" matTooltip="Add availability" (click)="openDialog()">
+                    <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="height-80">
+                <div *ngFor="let day of days, let i =index">
+                    <p class="no-margin" name="day">{{day.day}}</p>
+                    <div *ngIf="(!day.unavail && !day.avail) || day.avail ">
+                        <input class="removeTimer" disabled [(ngModel)]="day.startTime" name="start" type="time" >
+                        <small class="p-l-10"> - </small>
+                        <input class="removeTimer" disabled  [(ngModel)]="day.endTime" name="end" type="time" >
+                    </div>
+                    <div *ngIf="day.unavail">
+                        <p class="unavail-p">Unavailable</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="profile-schedule">
-           <div class="flex center">
-            <button class="add-btn"><span class="material-symbols-outlined">
-                add
-                </span>
-            </button>
-            <a >Add Hours</a>
-           </div>
-           <p><b class="title">Monday</b></p>
-        </div>
+
+
     </div>
 </div>
