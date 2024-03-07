@@ -19,7 +19,6 @@ export class LogInComponent {
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required,Validators.email]),
-      role: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
 
     })
@@ -43,12 +42,12 @@ export class LogInComponent {
         } else {
             sessionStorage.setItem('currentUser', JSON.stringify(foundUser));
 
-            if (this.loginForm.controls['role'].value == "admin") { 
+            if (foundUser.role == "admin") { 
                 // this.router.navigate(["/admin-dashboard"]);
-                this.router.navigate(["/home"]);
-            } else if (this.loginForm.controls['role'].value == "doctor") { 
+                this.router.navigate(["/dashboard"]);
+            } else if (foundUser.role == "doctor") { 
                 this.router.navigate(["/doctor-dashboard"]);
-            } else if (this.loginForm.controls['role'].value == "receptionist") { 
+            } else if (foundUser.role == "receptionist") { 
                 this.router.navigate(["/receptionist-dashboard"]);
             } else {
                 this.snackBar.open('Invalid role', 'OK');
