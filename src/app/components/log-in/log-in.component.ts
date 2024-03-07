@@ -23,7 +23,7 @@ export class LogInComponent {
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
 
     })
-  }
+  } 
 
   submit(): void {
     // Fetch all users
