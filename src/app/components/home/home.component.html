@@ -1,1 +1,58 @@
-<p>home works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav flex center-center column " fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <div class="flex center-center">
+      <div class="allSide">
+        <mat-toolbar class="leftTool flex center-center">
+          <div class="flex column center-center">
+            <div class="userPic flex center-center">
+              <img class="mediLogo " src="../../../assets/images/Admin.png" alt="">
+            </div>
+            <div class="userDetails flex center-center column">
+              <p>Jane Doe</p>
+              <small>Admin</small>
+            </div>
+          </div>
+
+        </mat-toolbar>
+        <hr>
+        <mat-nav-list *ngFor="let menu of menuItems">
+          <a mat-list-item class="flex center-center " routerLinkActive="active" [routerLink]="menu.route">
+            <mat-icon>{{menu.icon}}</mat-icon>
+            {{menu.label | titlecase}}</a>
+        </mat-nav-list>
+        <span class="flex-1"></span>
+        <mat-nav-list class="mtop6em">
+          <a mat-list-item class="flex center-center" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            Logout</a>
+        </mat-nav-list>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="gap1em ">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="medicalLogo flex center-center">
+        <img src="../../../assets/images/hospitalLogo-removebg-preview.png" alt="">
+      </div>
+      <span class="systemName">MEDICAL CENTER MANAGEMENT SYSTEM</span>
+      <span class="changedName">M.C.M.S</span>
+
+      <span class="flex-1"></span>
+      <div class="left flex center-center gap05em">
+        <div class="line"></div>
+        <mat-icon>logout</mat-icon>
+        <p>Logout</p>
+      </div>
+    </mat-toolbar>
+    <div class="display">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

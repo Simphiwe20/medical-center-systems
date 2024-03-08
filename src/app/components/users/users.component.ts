@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -23,6 +24,7 @@ export class UsersComponent {
       displayedHeaders: ['Full Names', 'email', 'ID number', 'Gender', 'Blood Group', 'contact']
     }
   }
+
 
 
 }

@@ -12,6 +12,5 @@ export class UserInfoService {
     return data ? JSON.parse(data) : data;
   }
 
-
   currentUser : any ;
 }
