@@ -8,7 +8,6 @@ import { PatientComponent } from './components/patient/patient.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AvaComponent } from './components/ava/ava.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -16,7 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, children: [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'users', component: UsersComponent},
-    {path: 'profile', component: AvaComponent},
+    {path: 'profile', component: ProfileComponent},
     {path: 'schedule', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
   ]},

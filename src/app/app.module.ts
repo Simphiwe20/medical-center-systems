@@ -22,8 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormsModule } from '@angular/forms';
-import { AvaComponent } from './components/ava/ava.component';
-import { DatepickerComponent } from './components/Popups/datepicker/datepicker.component';
 import { TimeComponent } from './components/Popups/time/time.component';
 
 
@@ -45,8 +43,6 @@ import { TimeComponent } from './components/Popups/time/time.component';
     PatientComponent,
     FooterComponent,
     ForgotPasswordComponent,
-    AvaComponent,
-    DatepickerComponent,
     TimeComponent
   ],
   imports: [
