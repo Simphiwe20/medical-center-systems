@@ -145,9 +145,9 @@ a:hover mat-icon {
     padding: 0;
 }
 
-.mtop6em {
-    // margin-top: 6em;
-}
+// .mtop6em {
+//     // margin-top: 6em;
+// }
 
 .medicalLogo {
     height: 100%;
@@ -171,6 +171,10 @@ a:hover mat-icon {
 
 .changedName{
     display: none;
+}
+
+.display {
+    height: calc(100% - 70px);
 }
 
 @media screen and (max-width: 765px) {
