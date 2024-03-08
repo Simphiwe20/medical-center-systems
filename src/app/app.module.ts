@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
 import { MaterialModule } from './modules/materials/material/material.module';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
+import { AvailComponent } from './components/avail/avail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DatePickerComponent } from './components/Popups/date-picker/date-picker
     FooterComponent,
     ForgotPasswordComponent,
     AddAvailComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    AvailComponent
     
   ],
   imports: [
