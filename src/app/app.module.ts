@@ -28,6 +28,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import { DetailsComponent } from './components/Popups/details/details.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {MatButtonModule} from '@angular/material/button';
     PatientComponent,
     FooterComponent,
     ForgotPasswordComponent,
-    TableComponent
+    TableComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatTableModule,
     MatButtonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
