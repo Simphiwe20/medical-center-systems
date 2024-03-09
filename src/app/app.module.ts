@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormsModule } from '@angular/forms';
+import { DoctorsComponent } from './components/doctors/doctors.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     PatientComponent,
     FooterComponent,
     ForgotPasswordComponent,
+    DoctorsComponent,
   ],
   imports: [
     BrowserModule,
