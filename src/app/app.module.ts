@@ -8,7 +8,6 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddPatientComponent } from './components/Popups/add-patient/add-patient.component';
 import { PrescriptionComponent } from './components/Popups/prescription/prescription.component';
-import { AvailabilityComponent } from './components/Popups/availability/availability.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SchedulesComponent } from './components/schedules/schedules.component';
@@ -34,7 +33,6 @@ import { AvailComponent } from './components/avail/avail.component';
     DashboardComponent,
     AddPatientComponent,
     PrescriptionComponent,
-    AvailabilityComponent,
     UsersComponent,
     ProfileComponent,
     SchedulesComponent,
