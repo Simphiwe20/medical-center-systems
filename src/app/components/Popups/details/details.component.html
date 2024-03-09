@@ -1,0 +1,29 @@
+<div class="flex column center-center full-height padding-1em">
+    <div class="flex full-width end-center"><mat-icon class="clear" (click)="back()">clear</mat-icon></div>
+    
+    <h3>{{isDoctor?'Doctor table' : ' Receptionist table'}}</h3>
+    <hr>
+    <h4 class="no-margin">Patient Details</h4>
+    <div class="flex column gap-05">
+    <p><b>Petient Id :</b> {{details.id}}</p>
+    <p><b>Petient Fill names : </b>{{details.name}}</p>
+    <p><b>Petient Gender :</b> {{details.gender}}</p>
+    <p><b>Petient IDENTITY NUMBER :</b> {{details.idNumber}}</p>
+    <p><b>Petient Blood Group :</b> {{details.bloodGroup}}</p>
+    <p><b>Petient Mobile Number :</b> {{details.contact}}</p>
+    <p><b>Petient Email address :</b> {{details.email}}</p>
+    <p><b>Petient Symptoms :</b> fever, vomiting</p>
+
+    <form class="example-form" *ngIf="isDoctor" #PrescriptionForm="ngForm">
+        <mat-form-field class="example-full-width full-width">
+          <mat-label>Prescription</mat-label>
+          <input matInput  [(ngModel)]="PrescriptionFormdata.prescription" name="prescription" maxlength="256" placeholder="Ex. I need help with...">
+        </mat-form-field>
+      </form>
+
+    <div class="flex gap full-width end-center">
+        <button mat-raised-button class="btn" color="warn" *ngIf="!isDoctor" >Delete</button>
+        <button mat-raised-button class="btn" color="accent" *ngIf="isDoctor" (click)="saveDocument(PrescriptionFormdata.prescription)">Download</button>
+        <button mat-raised-button class="btn" color="primary" (click)="edit(details)" *ngIf="!isDoctor">edit</button>
+    </div>
+</div>

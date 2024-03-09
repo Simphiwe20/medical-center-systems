@@ -1,0 +1,4 @@
+<mat-card class="demo-inline-calendar-card">
+    <p (click)="close()">X</p>
+    <mat-calendar [(selected)]="selected" (click)="close(); openTime() "></mat-calendar>
+</mat-card>

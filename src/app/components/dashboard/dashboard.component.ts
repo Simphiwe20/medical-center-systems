@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AddPatientComponent } from '../Popups/add-patient/add-patient.component';
-import { ChangePwdComponent } from '../Popups/change-pwd/change-pwd.component';
-import { PrescriptionComponent } from '../Popups/prescription/prescription.component';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +7,11 @@ import { PrescriptionComponent } from '../Popups/prescription/prescription.compo
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  constructor(private dialog:MatDialog){
-  }
 
-  
+    availDays: any;
+
+    constructor(private userService: UserInfoService) {
+      this.availDays =this.userService.get('availDays', 'local')
+      console.log(this.availDays)
+    }
 }

@@ -9,16 +9,7 @@
           <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
           <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email address</mat-error>
         </mat-form-field>
-  
-        <!-- role -->
-        <mat-form-field appearance="fill" class="input">
-          <mat-label>Role</mat-label>
-          <mat-select formControlName="role">
-            <mat-option *ngFor="let role of roles" [value]="role">{{ role | titlecase }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="loginForm.get('role')?.hasError('required')">Role is required</mat-error>
-        </mat-form-field><br>
-  
+        
         <!-- password -->
         <mat-form-field appearance="fill" class="input">
           <mat-label>Password</mat-label>

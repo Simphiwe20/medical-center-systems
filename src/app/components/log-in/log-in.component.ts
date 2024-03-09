@@ -12,14 +12,13 @@ import { UserInfoService } from 'src/app/services/user-info.service';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent {
+  
   loginForm: FormGroup;
 
-  roles: any[] = ['admin', 'doctor', 'receptionist'];
   constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar) {
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required,Validators.email]),
-      role: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
 
     })
@@ -42,17 +41,8 @@ export class LogInComponent {
             this.snackBar.open('Password incorrect', 'OK');
         } else {
             sessionStorage.setItem('currentUser', JSON.stringify(foundUser));
+            this.router.navigate(['/home'])
 
-            if (this.loginForm.controls['role'].value == "admin") { 
-                // this.router.navigate(["/admin-dashboard"]);
-                this.router.navigate(["/home"]);
-            } else if (this.loginForm.controls['role'].value == "doctor") { 
-                this.router.navigate(["/doctor-dashboard"]);
-            } else if (this.loginForm.controls['role'].value == "receptionist") { 
-                this.router.navigate(["/receptionist-dashboard"]);
-            } else {
-                this.snackBar.open('Invalid role', 'OK');
-            }
         }
     }
 }
