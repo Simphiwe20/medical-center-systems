@@ -25,6 +25,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { TableComponent } from './components/table/table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { DoctorsComponent } from './components/doctors/doctors.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
@@ -52,6 +53,7 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     PatientComponent,
     FooterComponent,
     ForgotPasswordComponent,
+    DoctorsComponent,
     TableComponent,
     DetailsComponent,
     AvailComponent,
