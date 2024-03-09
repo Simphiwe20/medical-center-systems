@@ -1,10 +1,11 @@
 <div class="flex column center-center full-height padding-1em">
-  <form [formGroup]="patientForm" class="full-width">
+
+  <form [formGroup]="patientForm" class="full-width flex column gap">
     <h3>New Patient</h3>
-    <hr>
-    <h5>Patient Details</h5>
+    <hr class="full-width">
     <div class="flex gap">
-      <div>
+
+      <div class="flex gap column">
         <mat-form-field class="full-width">
           <mat-label>Full Name</mat-label>
           <input type="text" matInput formControlName="fullName" placeholder="David Smith">
@@ -15,18 +16,37 @@
             Name should at least have more than 4 charectors
           </mat-error>
         </mat-form-field>
-
-        <div class="flex full-width">
-          <div class="half-width">
-            <mat-button-toggle-group formControlName="gender" required appearance="legacy" name="fontStyle"
-              aria-label="Font Style">
-              <mat-button-toggle value="male">Male</mat-button-toggle>
-              <mat-button-toggle value="female">Female</mat-button-toggle>
-            </mat-button-toggle-group>
-            <mat-error *ngIf="patientForm.get('gender')?.hasError('required')">
-              gender is <strong>required</strong>
-            </mat-error>
+        <div class="flex gap full-width">
+          <div>
+            <mat-form-field class="full-width">
+              <mat-label>ID number</mat-label>
+              <input type="number" matInput formControlName="id" placeholder="David Smith">
+              <mat-error *ngIf="patientForm.get('id')?.hasError('required')">
+                ID number is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="patientForm.get('id')?.hasError('maxLength')">
+                ID should have 13 digits
+              </mat-error>
+            </mat-form-field>
           </div>
+
+          <div class="half-width">
+            <mat-form-field appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let gender of genders" [value]="gender.value" formArrayName="gender">
+                  {{gender.viewValue}}
+                </mat-option>
+                <mat-error *ngIf="patientForm.get('gender')?.hasError('required')">
+                  Gender is <strong>required</strong>
+                </mat-error>
+              </mat-select>
+              <mat-error *ngIf="patientForm.get('gender')?.hasError('required')">
+                Gender is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
           <div class="half-width">
             <mat-form-field class="full-width" appearance="fill">
               <mat-label>DOB</mat-label>
@@ -49,9 +69,21 @@
               </mat-error>
             </mat-form-field>
           </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Do you have Medical Aid?</mat-label>
+              <mat-select formControlName="medicalAid">
+                <mat-option *ngFor="let medicalAid of _medicalAid" [value]="medicalAid">{{medicalAid}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="patientForm.get('medicalAid')?.hasError('required')">
+                Medical Aid is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
           <div class="half-width">
             <mat-form-field class="full-width">
               <mat-label>Cell Number</mat-label>
+              <mat-icon matSuffix>phone</mat-icon>
               <input type="tel" matInput formControlName="cellNumber" placeholder="000-000-0000" maxlength="10">
               <mat-error *ngIf="patientForm.get('cellNumber')?.hasError('required')">
                 Cell Number is <strong>required</strong>
@@ -63,34 +95,44 @@
           </div>
         </div>
 
-        <mat-form-field class="full-width">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput formControlName="email" placeholder="Dsmith@example.com">
-          <mat-error *ngIf="patientForm.get('email')?.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="patientForm.get('email')?.hasError('pattern')">
-            Please enter a valid email address
-          </mat-error>
-        </mat-form-field>
+        <div class="flex gap full-width">
 
+          <div>
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <mat-icon matSuffix>email</mat-icon>
+              <input type="email" matInput formControlName="email" placeholder="Dsmith@example.com">
+              <mat-error *ngIf="patientForm.get('email')?.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="patientForm.get('email')?.hasError('pattern')">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>Address</mat-label>
+            <mat-icon matSuffix>home</mat-icon>
+            <input type="text" matInput placeholder="" formControlName="address">
+            <mat-error *ngIf="patientForm.get('address')?.hasError('required')">
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>     
         <mat-form-field class="full-width">
           <mat-label>Symptoms</mat-label>
-          <input type="text" matInput formControlName="symptoms" placeholder="type address here...">
+          <textarea matInput placeholder="Patient Symptoms..." formControlName="symptoms"></textarea>
           <mat-error *ngIf="patientForm.get('symptoms')?.hasError('required')">
             Patient symptoms are <strong>required</strong>
           </mat-error>
-
         </mat-form-field>
       </div>
 
     </div>
-    <div class="flex column center-center">
 
-    </div>
-    <div class="flex gap full-width">
-      <button mat-raised-button class="flex1" color="warn" (click)="save()">Save</button>
-      <button mat-raised-button class="flex1" color="primary">Cancel</button>
+    <div class="flex gap start-left full-width">
+      <button mat-raised-button class="cancel" (click)="close()">Cancel</button>
+      <button mat-raised-button class="submit" color="primary" (click)="save()">Save</button>
     </div>
   </form>
 </div>

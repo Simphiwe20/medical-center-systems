@@ -9,27 +9,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./change-pwd.component.scss']
 })
 export class ChangePwdComponent {
-  hide = true;
-  resetPasswordForm: FormGroup
+  // hide = true;
+  // resetPasswordForm: FormGroup
 
-  constructor(private dialogRef: MatDialog, private snackbar: MatSnackBar) {
-    this.resetPasswordForm = new FormGroup({
-      newPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    })
-  }
+  // constructor(private dialogRef: MatDialog, private snackbar: MatSnackBar) {
+  //   this.resetPasswordForm = new FormGroup({
+  //     newPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
+  //     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
+  //   })
+  // }
 
-  changePassword() {
-    if (this.resetPasswordForm.get('newPassword')?.value !== this.resetPasswordForm.get('confirmPassword')?.value) {
-      this.snackbar.open('Password do not match', 'OK', { duration: 3000 })
-      console.log(this.resetPasswordForm)
-      console.log(this.resetPasswordForm.get('newPassword')?.value, this.resetPasswordForm.get('confirmPssword')?.value)
-    } else {
-      this.snackbar.open('Password changed successfully..!', 'OK', { duration: 3000 })
-    }
-  }
-  close() {
-    this.dialogRef.closeAll()
-  }
+  // changePassword() {
+  //   if (this.resetPasswordForm.get('newPassword')?.value !== this.resetPasswordForm.get('confirmPassword')?.value) {
+  //     this.snackbar.open('Password do not match', 'OK', { duration: 3000 })
+  //     console.log(this.resetPasswordForm)
+  //     console.log(this.resetPasswordForm.get('newPassword')?.value, this.resetPasswordForm.get('confirmPssword')?.value)
+  //   } else {
+  //     this.snackbar.open('Password changed successfully..!', 'OK', { duration: 3000 })
+  //   }
+  // }
+  // close() {
+  //   this.dialogRef.closeAll()
+  // }
 }
 

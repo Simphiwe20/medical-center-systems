@@ -1,12 +1,10 @@
-h2,h3{
-    text-transform: uppercase;
+h3{
+    text-transform: uppercase;    
     text-align: center;
 }
-// form{
-//     background-color: #ede2e2;
-// }
+
 body{
-    width: 50%;
+    width: 100%;
 }
 
 //size
@@ -45,17 +43,28 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+.start-left{
+    justify-content: end;
+}
 
 .column {
     flex-direction: column;
 }
 
 .gap {
-    gap: 0.5em;
+    gap: 1em;
 }
 
 //Padding
 
 .padding-1em{
     padding: 1em;
+    box-sizing: border-box;
+}
+.cancel:hover{
+background-color:red;
+   
+}
+.submit:hover{
+    background-color: red;
 }
