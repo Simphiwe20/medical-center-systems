@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-content>Total appointments-Today</mat-card-content>
+    <mat-icon class="icon">calendar_today</mat-icon>
+  </mat-card>
+  <mat-card class="card">
+    <mat-card-content>Total appointments-Month</mat-card-content>
+    <mat-icon class="icon">calendar_month </mat-icon>
+  </mat-card>
+  <mat-card class="large-card ">
+    <mat-card-content>
+      <h4>Doctor's Availiability</h4>
+      <div  *ngFor="let days of availDays">
+        <p class="no-margin">{{days.date | date}}</p>
+        <div class="flex gap05">
+          <small>From: {{days.hours.startTime}}</small>
+            <small> - </small>
+          <small>To: {{days.hours.endTime}}</small>
+        </div>
+        <hr>
+      </div>
+    </mat-card-content>
+  </mat-card><br>
+  <mat-card class="xlarge-card">
+    <mat-card-content>Today's appointments</mat-card-content>
+  </mat-card>
+  <!-- <mat-card class="round-card">
+        <mat-card-content>Today's appointments</mat-card-content>
+      </mat-card> -->
+</div>

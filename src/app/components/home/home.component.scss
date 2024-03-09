@@ -161,6 +161,10 @@ a:hover mat-icon {
     display: none;
 }
 
+.display {
+    height: calc(100% - 70px);
+}
+
 @media screen and (max-width: 765px) {
 
     .systemName{
