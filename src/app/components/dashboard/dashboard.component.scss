@@ -1,0 +1,76 @@
+.container {
+    // position: fixed;
+    // bottom: 0px;
+    // right: 0px;
+    // width: 100% ;
+    height: 100% ;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 999;
+    display: flex;
+    
+
+}
+
+.card {
+    color: black;
+    height: 100px;
+    width: 300px;
+    margin: 30px;
+
+}
+
+.large-card {
+    color: black;
+    // height: 300px;
+    width: 300px;
+    margin: 30px;
+    height: 40%;
+    z-index: 1;
+    &:hover{
+        height: 85%;
+    }
+}
+
+.xlarge-card {
+    color: black;
+    height: 300px;
+    width: 60%;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.icon{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+.round-card{
+    border-radius: 50%;
+    color: black;
+    height: 190px;
+    width: 200px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    position: absolute;
+    bottom: 15px;
+    right: 100px;
+    padding-right: 100px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+// @media screen and () {
+    
+// }

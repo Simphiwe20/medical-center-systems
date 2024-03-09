@@ -12,9 +12,9 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 export class HomeComponent {
   menuItems: any[] = [
     { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
-    { label: 'users', icon: 'group', route: '/home/users' },
+    { label: 'users', icon: 'group', route: '/home/schedule' },
     { label: 'profile', icon: 'person', route: '/home/profile' },
-    { label: 'availability', icon: 'event_busy', route: '/home/schedule' },
+    { label: 'availability', icon: 'event_busy', route: '/home/availability' },
 
   ]
 
@@ -33,7 +33,7 @@ export class HomeComponent {
 
     this.menuItemss = [
       { label: 'dashboard', icon: 'dashboard', route: 'home/dashboard' },
-      { label: 'users', icon: 'group', route: '/home/users' },
+      { label: 'users', icon: 'group', route: '/home/schedule' },
       { label: 'profile', icon: 'person', route: '/home/profile' },
       { label: 'availability', icon: 'event_busy', route: '/home/availability' },
 

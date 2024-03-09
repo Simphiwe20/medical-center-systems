@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AvailabilityComponent } from '../Popups/availability/availability.component';
+import { AddAvailComponent } from '../Popups/add-avail/add-avail.component';
+import { DatePickerComponent } from '../Popups/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +31,7 @@ export class ProfileComponent {
   }
 
   openDialog() {
-    let dialogRef = this.matdialog.open(AvailabilityComponent)
+    let dialogRef = this.matdialog.open(DatePickerComponent)
    
     dialogRef.afterClosed().subscribe( {
       next: (res) => {
