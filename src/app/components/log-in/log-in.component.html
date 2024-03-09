@@ -1,4 +1,5 @@
 <div class="form-container">
+  <div class="form-rotate">
     <div class="form">
       <h2 class="center">Login Form</h2>
       <form [formGroup]="loginForm" class="">
@@ -9,19 +10,21 @@
           <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
           <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email address</mat-error>
         </mat-form-field>
-  
-  
+
+
         <!-- password -->
         <mat-form-field appearance="fill" class="input">
           <mat-label>Password</mat-label>
           <input matInput placeholder="password" type="password" name="password" formControlName="password" required>
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
-          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password should have more than 4 characters</mat-error>
-          <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">Maximum length of password should be 8 characters</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password should have more than 4
+            characters</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">Maximum length of password should be 8
+            characters</mat-error>
         </mat-form-field>
-  
+
         <!-- buttons -->
-        <p class="center">Forgot <span routerLink="/forgotPassword" class="span"> password</span>?</p>
+        <p>Forgot <span routerLink="/forgotPassword" class="span"> password</span>?</p>
         <div class="buttons center">
           <button mat-raised-button [disabled]="loginForm.invalid" (click)="submit()" color="primary">
             Submit
@@ -33,4 +36,4 @@
       </form>
     </div>
   </div>
-  
+</div>
