@@ -14,7 +14,6 @@
               <small>Admin</small>
             </div>
           </div>
-
         </mat-toolbar>
         <hr>
         <mat-nav-list *ngFor="let menu of menuItems">
@@ -31,7 +30,7 @@
       </div>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="flex column center-center">
     <mat-toolbar class="gap1em ">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
@@ -42,19 +41,9 @@
       </div>
       <span class="systemName">MEDICAL CENTER MANAGEMENT SYSTEM</span>
       <span class="changedName">M.C.M.S</span>
-
-      <span class="flex-1"></span>
-      <div class="left flex center-center gap05em">
-        <div class="line"></div>
-        <mat-icon>logout</mat-icon>
-        <p>Logout</p>
-      </div>
     </mat-toolbar>
-    <div class="content">
-
+    <div class="routed-content">
+        <router-outlet></router-outlet>
     </div>
-      <router-outlet></router-outlet>
-
-
   </mat-sidenav-content>
 </mat-sidenav-container>
