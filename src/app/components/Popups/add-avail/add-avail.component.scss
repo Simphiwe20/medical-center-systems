@@ -1,0 +1,85 @@
+
+.day-container {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px grey solid;
+}
+
+.m-b-10 {
+    margin-top: 10px;
+}
+
+.times {
+    left: 200px
+}
+
+input {
+    height: 30px;
+}
+
+.end {
+    align-items: end;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.avail {
+    background-color: green;
+}
+
+.unavail {
+    background-color: red;
+}
+
+.unavail-p {
+    color: red;   
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.height-80 {
+    height: 70%;
+}
+
+.removeTimer {
+    &::-webkit-calendar-picker-indicator {
+    background: none;
+  }
+    border: none;
+    padding: 0;
+    // width: 30px;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px 10px
+
+}
+
+.m-t-10 {
+    margin: 10px 0 0 0;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+section {
+    justify-content: flex-end;
+}
+
+.main-container {
+    width: 200px;
+}
+
+.container {
+    width: 80%;
+}
