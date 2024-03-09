@@ -12,7 +12,9 @@ import { UserInfoService } from 'src/app/services/user-info.service';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent {
+  
   loginForm: FormGroup;
+
   constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar) {
 
     this.loginForm = new FormGroup({
@@ -39,8 +41,8 @@ export class LogInComponent {
             this.snackBar.open('Password incorrect', 'OK');
         } else {
             sessionStorage.setItem('currentUser', JSON.stringify(foundUser));
-            this.router.navigate(["/home"]);
-      
+            this.router.navigate(['/home'])
+
         }
     }
 }
