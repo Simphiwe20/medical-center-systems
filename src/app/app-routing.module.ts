@@ -18,7 +18,7 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'users', component: UsersComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'schedule', component: ScheduleComponent},
+    {path: 'schedule', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
     {path: 'availability', component: AvailabilityComponent},
   ]},
