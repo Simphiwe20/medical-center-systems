@@ -128,7 +128,7 @@ export class TableComponent implements OnChanges {
               this.mynew.push({
                 fullName: item.fullName,
                 email: item.email,
-                role: item.role === 'receptionist' ? 'receptionist' : 'doctor',
+                role: item.occupation === 'receptionist' ? 'receptionist' : 'doctor',
                 phoneNumber: item.cellNumber,
                 address: item.address,
                 password: this.userInfor.generatePwd()

@@ -12,7 +12,7 @@ export class UserInfoService {
 
   get(key: string, sessionType: string): any {
     let data = sessionType === 'session' ? sessionStorage.getItem(key) : localStorage.getItem(key);
-    return data ? JSON.parse(data) : data;
+    return data ? JSON.parse(data) : [];
   }
 
   store(value: any, key: string, sessionType: string): void {

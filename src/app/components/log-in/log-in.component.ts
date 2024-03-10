@@ -20,7 +20,7 @@ export class LogInComponent {
 
 
     this.user = this.sharedService.get('users', 'local')
-    if (!this.user) {
+    if (!this.user.length) {
       this.sharedService.store([{
         fullName: 'Built-In Admin',
         email: 'admin@medicalcenter.ac.za',

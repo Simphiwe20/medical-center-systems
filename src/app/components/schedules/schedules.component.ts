@@ -35,8 +35,9 @@ export class SchedulesComponent implements OnInit {
       { name: "Appointment description", height: 50, map_to: "text", type: "textarea", focus: true, color: 'red' },
       { name: "Patient name", height: 20, map_to: "Patient_name", type: "textarea", focus: true},
       { name: "Patient's email", height: 40, map_to: "Patient_email", type: "textarea"},
-      { name: "Doctor's name", height: 40, map_to: "Doctor_name", type: "textarea", default_value: `${this.doc ? this.doc.doctorName : ''}` },
-      { name: "Doctor's email", height: 40, map_to: "email", type: "textarea", default_value: `${this.doc ? this.doc.doctorEmail : ''}` },
+      // { name: "Doctor's name", height: 40, map_to: "Doctor_name", type: "textarea", default_value: `${this.doc ? this.doc.doctorName : ''}` },
+      // { name: "Doctor's email", height: 40, map_to: "email", type: "textarea", default_value: `${this.doc ? this.doc.doctorEmail : ''}` },
+      // { name: "Status", height: 40, map_to: "status", type: "textarea", default_value: 'Pending',  },
       { name: "time", height: 72, type: "time", map_to: "auto", color: 'yellow' }
     ];
 
@@ -66,6 +67,11 @@ export class SchedulesComponent implements OnInit {
     });
 
     scheduler.attachEvent('onEventAdded', (id, event) => {
+      event['status'] = 'Pending',
+      console.log(this.doc)
+      event['doctorName'] = this.doc.doctorFullName,
+      event['doctorEmail'] = this.doc.doctorEmail
+
       this.events.push(event);
       console.log(this.events)
       localStorage.setItem('schedules', JSON.stringify(this.events));

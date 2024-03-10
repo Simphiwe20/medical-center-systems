@@ -33,6 +33,7 @@ import { AvailComponent } from './components/avail/avail.component';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TimeComponent } from './components/Popups/time/time.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
     AvailComponent,
     DatePickerComponent,
     AddAvailComponent,
-    rejectReasonComponent
+    rejectReasonComponent,
+    TimeComponent
 
   ],
   imports: [

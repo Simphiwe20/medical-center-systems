@@ -13,12 +13,15 @@ export class DashboardComponent {
 
     availDays: any;
     user: any;
+    today: any;
 
     constructor(private userService: UserInfoService, private dialog:MatDialog, private shared: SharedServiceService) {
       this.availDays =this.userService.get('availDays', 'local')
       console.log(this.availDays)
       this.user = sessionStorage.getItem('currentUser')
       this.user = JSON.parse(this.user)
+      // this.today = this.userService.get('schedule')
+
 
     }
 
