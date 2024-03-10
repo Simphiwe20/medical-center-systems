@@ -21,7 +21,7 @@ export class AddPatientComponent {
       fullName: new FormControl('', [Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/)]),
       cellNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-      id: new FormControl(Number, [Validators.required, Validators.minLength(13), Validators.maxLength(13)]),
+      id: new FormControl(Number, [Validators.required, Validators.minLength(13), Validators.minLength(13)]),
       symptoms: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       dob: new FormControl(false, [Validators.required]),

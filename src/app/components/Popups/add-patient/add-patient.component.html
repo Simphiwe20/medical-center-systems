@@ -20,11 +20,11 @@
           <div>
             <mat-form-field class="full-width">
               <mat-label>ID number</mat-label>
-              <input type="number" matInput formControlName="id" placeholder="David Smith">
+              <input type="number" matInput formControlName="id" placeholder="David Smith" maxlength="13">
               <mat-error *ngIf="patientForm.get('id')?.hasError('required')">
                 ID number is <strong>required</strong>
               </mat-error>
-              <mat-error *ngIf="patientForm.get('id')?.hasError('maxLength')">
+              <mat-error *ngIf="patientForm.get('id')?.hasError('minlength')">
                 ID should have 13 digits
               </mat-error>
             </mat-form-field>
@@ -94,7 +94,7 @@
 
         <div class="flex gap full-width">
 
-          <div>
+          <div class="email">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
               <mat-icon matSuffix>email</mat-icon>
@@ -107,14 +107,17 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <mat-form-field class="full-width">
-            <mat-label>Address</mat-label>
-            <mat-icon matSuffix>home</mat-icon>
-            <input type="text" matInput placeholder="" formControlName="address">
-            <mat-error *ngIf="patientForm.get('address')?.hasError('required')">
-              Address is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+          <div class="email">
+            <mat-form-field class="full-width">
+              <mat-label>Address</mat-label>
+              <mat-icon matSuffix>home</mat-icon>
+              <input type="text" matInput placeholder="" formControlName="address">
+              <mat-error *ngIf="patientForm.get('address')?.hasError('required')">
+                Address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        
         </div>     
         <mat-form-field class="full-width">
           <mat-label>Symptoms</mat-label>
