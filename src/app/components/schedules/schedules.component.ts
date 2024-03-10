@@ -17,11 +17,15 @@ interface CsvEvent {
 })
 export class SchedulesComponent implements OnInit {
   @ViewChild('scheduler_here', { static: true }) schedulerContainer!: ElementRef;
+  doc!: any;
 
-  constructor(){
+  constructor(private shared: SharedServiceService){
+    this.doc = this.shared.availDoc
+    console.log(this.doc)
     
   }
 
+  
   alert_opts: { key: string, label: string, disabled: boolean }[] = [
     { key: 'Simphiwe', label: 'Simphiwe', disabled: true },
     { key: 'Kea', label: 'Kea', disabled:false },
