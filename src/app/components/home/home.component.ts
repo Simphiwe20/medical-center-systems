@@ -12,6 +12,9 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 export class HomeComponent {
   user: any;
   menuItems: any[] = [];
+  isAdmin: boolean = true;
+  isReception: boolean = true;
+  isDoctor: boolean = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -30,6 +33,9 @@ export class HomeComponent {
         { label: 'profile', icon: 'person', route: '/home/profile' },
         { label: 'doctors', icon: 'group', route: '/home/doctors'},
       ]
+      this.isAdmin = false;
+      
+
     } else if (this.user.role === 'reception') {
       this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
@@ -37,8 +43,8 @@ export class HomeComponent {
         { label: 'schedule', icon: 'event_available', route: '/home/schedules'},
         { label: 'profile', icon: 'person', route: '/home/profile' },
         { label: 'doctors', icon: 'group', route: '/home/doctors'},
-
       ]
+      this.isReception = false;
     } else {
       this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
@@ -46,6 +52,8 @@ export class HomeComponent {
         { label: 'patient', icon: 'personal_injury', route: '/home/patient'},
         { label: 'availability', icon: 'group', route: '/home/availability'},
       ]
+      this.isDoctor= false;
+
     }
   }
 

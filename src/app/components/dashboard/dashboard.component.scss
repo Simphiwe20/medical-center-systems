@@ -44,6 +44,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    margin-left: 100px;
 }
 .icon{
     position: absolute;
@@ -55,16 +56,20 @@
     margin-left: 40px;
 }
 .round-card{
-    border-radius: 50%;
+   
     color: black;
-    height: 190px;
-    width: 200px;
-    margin-bottom: 40px;
-    margin-left: 40px;
-    position: absolute;
-    bottom: 15px;
-    right: 100px;
-    padding-right: 100px;
+    width: 400px; 
+    height: 400px;
+    bottom: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 100px;
+    // margin-bottom: 40px;
+    // margin-left: 40px;
+    // position: absolute;
+    // bottom: 15px;
+    // right: 100px;
+    // padding-right: 100px;
 }
 
 .no-margin {

@@ -10,6 +10,9 @@ import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DoctorsComponent } from './components/doctors/doctors.component';
 import { AvailComponent } from './components/avail/avail.component';
+import { ReceptionDashboardComponent } from './dashboards/reception-dashboard/reception-dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DoctorDashboardComponent } from './dashboards/doctor-dashboard/doctor-dashboard.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -24,8 +27,11 @@ const routes: Routes = [
     {path: 'schedule', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
     {path: 'availability', component: AvailComponent},
+    // {path:'dashboards/doctorDashboard', component:DoctorDashboardComponent},
+    // {path:'dashboards/receptionDasboard,',component:ReceptionDashboardComponent}
   ]},
-  {path:'forgotPassword',component:ForgotPasswordComponent}
+  {path:'forgotPassword',component:ForgotPasswordComponent},
+  {path: '**',component:PageNotFoundComponent}
 ];
 
 

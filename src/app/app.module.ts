@@ -33,6 +33,9 @@ import { DetailsComponent } from './components/Popups/details/details.component'
 import { AvailComponent } from './components/avail/avail.component';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
+import { DoctorDashboardComponent } from './dashboards/doctor-dashboard/doctor-dashboard.component';
+import { ReceptionDashboardComponent } from './dashboards/reception-dashboard/reception-dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -58,7 +61,10 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     DetailsComponent,
     AvailComponent,
     DatePickerComponent,
-    AddAvailComponent
+    AddAvailComponent,
+    DoctorDashboardComponent,
+    ReceptionDashboardComponent,
+    PageNotFoundComponent
 
   ],
   imports: [

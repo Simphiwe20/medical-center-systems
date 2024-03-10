@@ -7,7 +7,7 @@
     <mat-card-content>Total appointments-Month</mat-card-content>
     <mat-icon class="icon">calendar_month </mat-icon>
   </mat-card>
-  <mat-card class="large-card ">
+  <mat-card class="large-card "  *ngIf="user.role === 'reception'">
     <mat-card-content>
       <h4>Doctor's Availiability</h4>
       <div  *ngFor="let days of availDays">
@@ -21,10 +21,16 @@
       </div>
     </mat-card-content>
   </mat-card><br>
-  <mat-card class="xlarge-card">
+  <!-- Receptionist -->
+  <mat-card class="xlarge-card" *ngIf="user.role === 'receptionist'">
     <mat-card-content>Today's appointments</mat-card-content>
   </mat-card>
-  <!-- <mat-card class="round-card">
-        <mat-card-content>Today's appointments</mat-card-content>
-      </mat-card> -->
+  <!-- Doctor -->
+  <mat-card class="xlarge-card" *ngIf="user.role === 'doctor'">
+    <mat-card-content>Approved appointments</mat-card-content>
+  </mat-card>
+  <!-- admin -->
+  <div class="round-card" *ngIf="user.role === 'admin'">
+    <canvas id="pieChart"></canvas>
+  </div>
 </div>
