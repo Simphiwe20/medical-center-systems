@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvailabilityComponent } from './availability.component';
+import { TodayTableComponent } from './today-table.component';
 
-describe('AvailabilityComponent', () => {
-  let component: AvailabilityComponent;
-  let fixture: ComponentFixture<AvailabilityComponent>;
+describe('TodayTableComponent', () => {
+  let component: TodayTableComponent;
+  let fixture: ComponentFixture<TodayTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvailabilityComponent ]
+      declarations: [ TodayTableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AvailabilityComponent);
+    fixture = TestBed.createComponent(TodayTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

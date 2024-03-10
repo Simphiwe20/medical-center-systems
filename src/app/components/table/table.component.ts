@@ -7,6 +7,9 @@ import { AddPatientComponent } from '../Popups/add-patient/add-patient.component
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DetailsComponent } from '../Popups/details/details.component';
 import *as XLSX from 'xlsx';
+import { SharedServiceService } from 'src/app/services/shared-service.service';
+import { UserInfoService } from 'src/app/services/user-info.service';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-table',
@@ -33,7 +36,8 @@ export class TableComponent implements OnChanges {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private matDialog: MatDialog, private snackbar: MatSnackBar) {
+  constructor(private matDialog: MatDialog, private snackbar: MatSnackBar, private userInfor: UserInfoService,
+    private api: ApiServiceService) {
     // this.new = localStorage.getItem('users')
     // this.new = JSON.parse(this.new)
 
@@ -111,7 +115,7 @@ export class TableComponent implements OnChanges {
         console.log(users)
         if (users.length > 0) {
           // console.log("if working")
-          this.spreadsheetData.forEach((item: { email: any; }) => {
+          this.spreadsheetData.forEach((item: any) => {
             doesUserExist = false;
             users.forEach((user: { email: any; }) => {
 
@@ -121,15 +125,28 @@ export class TableComponent implements OnChanges {
               }
             });
             if (!doesUserExist) {
-              this.mynew.push(item)
+              this.mynew.push({
+                fullName: item.fullName,
+                email: item.email,
+                role: item.role === 'receptionist' ? 'receptionist' : 'doctor',
+                phoneNumber: item.cellNumber,
+                address: item.address,
+                password: this.userInfor.generatePwd()
+              })      
             }
           });
 
           this.mynew.forEach(((newUser: any) => {
             users.push(newUser)
           }))
-          // console.log(users)
           localStorage.setItem('users', JSON.stringify(users))
+          this.api.genericPost('/sendPassword', users[users.length - 1])
+            .subscribe({
+              next: (res) => {console.log(res)},
+              error: (err) => {console.log(err)},
+              complete: () => {}
+            })
+          // console.log(users)
         } else {
           console.log("else working")
           localStorage.setItem('users', JSON.stringify(this.spreadsheetData))

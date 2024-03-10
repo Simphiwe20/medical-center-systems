@@ -5,7 +5,7 @@
 
 .filter-box {
     width: 400px;
-    height: 65px;
+    height: 50px;
 }
 
 .text-center {
@@ -51,4 +51,12 @@ button:hover{
 
 .ng-tns-c15-0{
     height: 100%;
+}
+.margin-bottom{
+    margin-bottom: 20px;
+}
+.mat-sort-header-container ,.mat-focus-indicator{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
 }
