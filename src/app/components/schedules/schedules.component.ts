@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 // import { scheduler } from 'dhtmlx-scheduler';
 import { scheduler } from 'dhtmlx-scheduler';
+import { SharedServiceService } from 'src/app/services/shared-service.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -10,11 +11,15 @@ import { scheduler } from 'dhtmlx-scheduler';
 })
 export class SchedulesComponent implements OnInit {
   @ViewChild('scheduler_here', { static: true }) schedulerContainer!: ElementRef;
+  doc!: any;
 
-  constructor(){
+  constructor(private shared: SharedServiceService){
+    this.doc = this.shared.availDoc
+    console.log(this.doc)
     
   }
 
+  
   alert_opts: { key: string, label: string, disabled: boolean }[] = [
     { key: 'Simphiwe', label: 'Simphiwe', disabled: true },
     { key: 'Kea', label: 'Kea', disabled:false },
@@ -28,8 +33,10 @@ export class SchedulesComponent implements OnInit {
 
     scheduler.config.lightbox.sections = [
       { name: "Appointment description", height: 50, map_to: "text", type: "textarea", focus: true, color: 'red' },
-      { name: "Patient name", height: 20, map_to: "Patient_name", type: "textarea", focus: true },
-      { name: "Doctor's name", height: 40, map_to: "Doctor_name", type: "select", options: this.alert_opts },
+      { name: "Patient name", height: 20, map_to: "Patient_name", type: "textarea", focus: true},
+      { name: "Patient's email", height: 40, map_to: "Patient_email", type: "textarea"},
+      { name: "Doctor's name", height: 40, map_to: "Doctor_name", type: "textarea", default_value: `${this.doc ? this.doc.doctorName : ''}` },
+      { name: "Doctor's email", height: 40, map_to: "email", type: "textarea", default_value: `${this.doc ? this.doc.doctorEmail : ''}` },
       { name: "time", height: 72, type: "time", map_to: "auto", color: 'yellow' }
     ];
 
@@ -64,4 +71,7 @@ export class SchedulesComponent implements OnInit {
       localStorage.setItem('schedules', JSON.stringify(this.events));
     });    
   }
+
+
+
 }
