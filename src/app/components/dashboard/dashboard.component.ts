@@ -10,7 +10,7 @@ import { SharedServiceService } from 'src/app/services/shared-service.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  isDoctor:boolean = false;
     availDays: any;
     user: any;
 

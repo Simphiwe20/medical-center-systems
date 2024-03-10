@@ -40,7 +40,7 @@ export class SchedulesComponent implements OnInit {
       { name: "time", height: 72, type: "time", map_to: "auto", color: 'yellow' }
     ];
 
-    const date = new Date().getDay()
+    const date = new Date().getDay().toString().slice(16, 21)
     console.log(new Date)
 
     // Other initialization code
