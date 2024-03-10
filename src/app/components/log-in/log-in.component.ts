@@ -64,10 +64,7 @@ export class LogInComponent {
       }
     }
   }
-  resetForm() {
 
-    console.log(this.loginForm)
-}
 resetForm() {
     this.loginForm.reset();
   }

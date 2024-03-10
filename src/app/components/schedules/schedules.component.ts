@@ -19,8 +19,7 @@ export class SchedulesComponent implements OnInit {
   @ViewChild('scheduler_here', { static: true }) schedulerContainer!: ElementRef;
   doc!: any;
 
-  constructor(private shared: SharedServiceService){
-    this.doc = this.shared.availDoc
+  constructor(){
     console.log(this.doc)
     
   }

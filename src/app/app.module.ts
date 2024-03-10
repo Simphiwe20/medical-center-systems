@@ -76,7 +76,7 @@ import { TodayTableComponent } from './components/Popups/today-table/today-table
     HttpClientModule
     
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
