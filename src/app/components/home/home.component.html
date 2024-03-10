@@ -9,9 +9,9 @@
             <div class="userPic flex center-center">
               <img class="mediLogo " src="../../../assets/images/Admin.png" alt="">
             </div>
-            <div class="userDetails flex center-center column">
-              <p>Jane Doe</p>
-              <small>Admin</small>
+            <div class="userDetails flex center-center column" *ngIf="user">
+              <p>{{user.FullNames | titlecase}}</p>
+              <small>{{user.role | titlecase}} </small>
             </div>
           </div>
         </mat-toolbar>

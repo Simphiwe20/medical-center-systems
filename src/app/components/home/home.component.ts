@@ -13,6 +13,7 @@ export class HomeComponent {
   user: any;
   menuItems: any[] = [];
 
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -53,5 +54,7 @@ export class HomeComponent {
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
+  
+
 
 }
