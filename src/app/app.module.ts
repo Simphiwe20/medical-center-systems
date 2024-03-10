@@ -18,13 +18,22 @@ import { ChangePwdComponent } from './components/Popups/change-pwd/change-pwd.co
 import { PatientComponent } from './components/patient/patient.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/materials/material/material.module';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TableComponent } from './components/table/table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
-import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
-import { MaterialModule } from './modules/materials/material/material.module';
-import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
+import { DoctorsComponent } from './components/doctors/doctors.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import { DetailsComponent } from './components/Popups/details/details.component';
 import { AvailComponent } from './components/avail/avail.component';
+import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
+import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
+
 
 @NgModule({
   declarations: [
@@ -44,18 +53,26 @@ import { AvailComponent } from './components/avail/avail.component';
     PatientComponent,
     FooterComponent,
     ForgotPasswordComponent,
-    AddAvailComponent,
+    DoctorsComponent,
+    TableComponent,
+    DetailsComponent,
+    AvailComponent,
     DatePickerComponent,
-    AvailComponent
-    
+    AddAvailComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
+    FormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatButtonModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

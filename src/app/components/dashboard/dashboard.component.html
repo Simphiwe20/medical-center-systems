@@ -10,7 +10,7 @@
   <mat-card class="large-card ">
     <mat-card-content>
       <h4>Doctor's Availiability</h4>
-      <div  *ngFor="let days of availDays" >
+      <div  *ngFor="let days of availDays">
         <p class="no-margin">{{days.date | date}}</p>
         <div class="flex gap05">
           <small>From: {{days.hours.startTime}}</small>
