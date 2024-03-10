@@ -36,12 +36,16 @@ export class LogInComponent {
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
 
     })
+
+    
   }
 
   submit(): void {
     // Fetch all users
     let _users = localStorage.getItem('users');
     const users = _users ? JSON.parse(_users) : [];
+
+
 
     if (this.loginForm.valid) {
       // Check if user exists
@@ -60,7 +64,8 @@ export class LogInComponent {
       }
     }
   }
-  resetForm() {
+
+resetForm() {
     this.loginForm.reset();
   }
 }
