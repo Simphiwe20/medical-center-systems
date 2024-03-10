@@ -7,10 +7,11 @@
         <mat-toolbar class="leftTool flex center-center">
           <div class="flex column center-center">
             <div class="userPic flex center-center">
-              <img class="mediLogo " src="../../../assets/images/Admin.png" alt="">
+              <!-- <img class="mediLogo " src="../../../assets/images/Admin.png" alt=""> -->
+              <mat-icon>account_circle</mat-icon>
             </div>
-            <div class="userDetails flex center-center column" *ngIf="user">
-              <p>{{user.FullNames | titlecase}}</p>
+            <div class="userDetails flex center-center column">
+              <p>{{user.fullName | titlecase}}</p>
               <small>{{user.role | titlecase}} </small>
             </div>
           </div>

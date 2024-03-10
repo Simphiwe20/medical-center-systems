@@ -7,8 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddPatientComponent } from './components/Popups/add-patient/add-patient.component';
-import { PrescriptionComponent } from './components/Popups/prescription/prescription.component';
-import { AvailabilityComponent } from './components/Popups/availability/availability.component';
+import { rejectReasonComponent } from './components/Popups/rejectReason/rejectReason.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SchedulesComponent } from './components/schedules/schedules.component';
@@ -33,6 +32,8 @@ import { DetailsComponent } from './components/Popups/details/details.component'
 import { AvailComponent } from './components/avail/avail.component';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TodayTableComponent } from './components/Popups/today-table/today-table.component';
 
 
 @NgModule({
@@ -42,8 +43,6 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     LogInComponent,
     DashboardComponent,
     AddPatientComponent,
-    PrescriptionComponent,
-    AvailabilityComponent,
     UsersComponent,
     ProfileComponent,
     SchedulesComponent,
@@ -58,7 +57,9 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     DetailsComponent,
     AvailComponent,
     DatePickerComponent,
-    AddAvailComponent
+    AddAvailComponent,
+    rejectReasonComponent,
+    TodayTableComponent
 
   ],
   imports: [
@@ -72,6 +73,7 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     MatButtonModule,
     MaterialModule,
     ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],

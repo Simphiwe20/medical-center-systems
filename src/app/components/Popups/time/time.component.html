@@ -1,21 +1,21 @@
-<div class="main-container p-20 full-height flex column gap05 center-center">
-    <div class="container full-height flex center-center gap05 column">
+<div class="main-container p-20 full-height flex center-center">
+    <div class="container full-height flex center-center column">
         <p class="close" (click)="close() ">X</p>
         <!-- <p class="m-t-10">Availability</p> -->
         <p>Availability hours</p>
-        <div class="full-height flex gap05 column">
-            <div class="flex column width-80">
+        <div class="full-height flex column">
+            <div class="flex column">
                 <label for="start"><small>Start time</small></label>
-                <input type="time" name="startTime" [(ngModel)]="availHours.startTime" id="start" min="22:00:00" max="18:00"
+                <input type="time" name="startTime" [(ngModel)]="availHours.startTime" id="start" min="09:00" max="18:00"
                     required />
             </div>
-            <div class="flex column width-80">
+            <div class="flex column">
                 <label for="end"><small>End time</small></label>
                 <input type="time" name="endTime" [(ngModel)]="availHours.endTime" id="end" min="09:00" max="18:00" required />
             </div>
         </div>
     </div>
     <section class="">
-        <button mat-raised-button (click)="save()">Save</button>
+        <button mat-raised-button (click)="save()" color="accent">Save</button>
     </section>
 </div>
