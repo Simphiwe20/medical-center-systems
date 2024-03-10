@@ -17,6 +17,9 @@ export class EmailService {
       message: message
     };
 
+    console.log(emailParams)
     return emailjs.send('service_qcyibif', 'template_ghl9rhc', emailParams, 'AC09qjYdVrapPhld6');
+    
   }
+  
 }

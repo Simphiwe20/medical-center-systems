@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './change-pwd.component.html',
   styleUrls: ['./change-pwd.component.scss']
 })
+
 export class ChangePwdComponent {
 
 }

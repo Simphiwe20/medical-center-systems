@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AvailabilityComponent } from '../Popups/availability/availability.component';
 import { AddAvailComponent } from '../Popups/add-avail/add-avail.component';
 import { DatePickerComponent } from '../Popups/date-picker/date-picker.component';
 

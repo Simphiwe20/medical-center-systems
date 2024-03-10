@@ -22,7 +22,8 @@ export class HomeComponent {
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userInfo: UserInfoService) {
     this.user = this.userInfo.get('currentUser', 'session');
 
-    
+    this.router.navigate(['/home/dashboard'])
+
     if (this.user.role === 'admin') {
       this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
@@ -30,7 +31,7 @@ export class HomeComponent {
         { label: 'profile', icon: 'person', route: '/home/profile' },
         { label: 'doctors', icon: 'group', route: '/home/doctors'},
       ]
-    } else if (this.user.role === 'reception') {
+    } else if (this.user.role === 'receptionist') {
       this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
         { label: 'patient', icon: 'personal_injury', route: '/home/patient'},
@@ -39,7 +40,7 @@ export class HomeComponent {
         { label: 'doctors', icon: 'group', route: '/home/doctors'},
 
       ]
-    } else {
+    } else if(this.user.role === 'doctor') {
       this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
         { label: 'schedule', icon: 'event_available', route: '/home/schedules' },
