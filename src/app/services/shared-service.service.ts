@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SharedServiceService {
 
+  availDoc: any;
+
   days: any = [{ day: 'Sunday', startTime: '', endTime: '' }, { day: 'Monday', startTime: '', endTime: '' }, { day: 'Tuesday', startTime: '', endTime: '' },
   { day: 'Wednesday', startTime: '', endTime: '' }, { day: 'Thursday', startTime: '', endTime: '' }, { day: 'Friday', startTime: '', endTime: '' }, { day: 'Sartuday', startTime: '', endTime: '' }]
 
@@ -25,5 +27,9 @@ export class SharedServiceService {
       return this.days
 
     })
+  }
+
+  getAvail(doc: any): any {
+    this.availDoc =  doc
   }
 }

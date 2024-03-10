@@ -10,17 +10,8 @@ import { UserInfoService } from 'src/app/services/user-info.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  // menuItems: any[] = [
-  //   { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
-  //   { label: 'users', icon: 'group', route: '/home/users' },
-  //   { label: 'profile', icon: 'person', route: '/home/profile' },
-  //   { label: 'availability', icon: 'event_busy', route: '/home/availability' },
-
-  // ]
-
   user: any;
-  menuItemss: any[] = [];
-
+  menuItems: any[] = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -31,36 +22,30 @@ export class HomeComponent {
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userInfo: UserInfoService) {
     this.user = this.userInfo.get('currentUser', 'session');
 
-    // this.menuItemss = [
-    //   { label: 'dashboard', icon: 'dashboard', route: 'home/dashboard' },
-    //   { label: 'users', icon: 'group', route: '/home/users' },
-    //   { label: 'profile', icon: 'person', route: '/home/profile' },
-    //   { label: 'availability', icon: 'event_busy', route: '/home/availability' },
+    this.router.navigate(['/home/dashboard'])
 
-    // ]
-
-    
     if (this.user.role === 'admin') {
-      // Admin
-      this.menuItemss = [
+      this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
         { label: 'users', icon: 'group', route: '/home/users' },
         { label: 'profile', icon: 'person', route: '/home/profile' },
+        { label: 'doctors', icon: 'group', route: '/home/doctors'},
       ]
     } else if (this.user.role === 'receptionist') {
-      // Reception
-      this.menuItemss = [
+      this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
-        { label: 'schedules', icon: 'schedule', route: '/home/schedule' },
         { label: 'patient', icon: 'personal_injury', route: '/home/patient'},
+        { label: 'schedule', icon: 'event_available', route: '/home/schedules'},
+        { label: 'profile', icon: 'person', route: '/home/profile' },
+        { label: 'doctors', icon: 'group', route: '/home/doctors'},
+
       ]
-    } else {
-      // Doctor
-      this.menuItemss = [
+    } else if(this.user.role === 'doctor') {
+      this.menuItems = [
         { label: 'dashboard', icon: 'dashboard', route: '/home/dashboard' },
-        { label: 'schedules', icon: 'event_available', route: '/home/schedule' },
+        { label: 'schedule', icon: 'event_available', route: '/home/schedules' },
         { label: 'patient', icon: 'personal_injury', route: '/home/patient'},
-        { label: 'availability', icon: 'personal_injury', route: '/home/availability'}
+        { label: 'availability', icon: 'group', route: '/home/availability'},
       ]
     }
   }

@@ -4,11 +4,11 @@ import { HomeComponent } from './components/home/home.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
-import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule';
 import { PatientComponent } from './components/patient/patient.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { DoctorsComponent } from './components/doctors/doctors.component';
 import { AvailComponent } from './components/avail/avail.component';
 
 const routes: Routes = [
@@ -18,6 +18,9 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'users', component: UsersComponent},
     {path: 'profile', component: ProfileComponent},
+    {path: 'schedules', component: SchedulesComponent},
+    {path: 'patient', component: PatientComponent},
+    {path: 'doctors', component: DoctorsComponent},
     {path: 'schedule', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
     {path: 'availability', component: AvailComponent},
