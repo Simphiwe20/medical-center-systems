@@ -16,10 +16,11 @@ export class LogInComponent {
   loginForm: FormGroup;
 
   constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar) {
+    // localStorage.setItem('users',JSON.stringify([{email: "kea@123.com",Password:"Maja@123"}]))
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required,Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
 
     })
   }
