@@ -33,6 +33,8 @@ import { DetailsComponent } from './components/Popups/details/details.component'
 import { AvailComponent } from './components/avail/avail.component';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
+import { DatePipe } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -72,9 +74,10 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     MatButtonModule,
     MaterialModule,
     ReactiveFormsModule,
+    MatDialogModule
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

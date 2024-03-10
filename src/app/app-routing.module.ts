@@ -10,13 +10,14 @@ import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DoctorsComponent } from './components/doctors/doctors.component';
 import { AvailComponent } from './components/avail/avail.component';
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LogInComponent},
   {path: 'home', component: HomeComponent, children: [
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'users', component: SchedulesComponent},
+    {path: 'users', component: UsersComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'schedules', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
