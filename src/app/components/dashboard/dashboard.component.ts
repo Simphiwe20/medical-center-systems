@@ -9,7 +9,7 @@ import { SchedulesComponent } from '../schedules/schedules.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  isDoctor:boolean = false;
     availDays: any;
 
     constructor(private userService: UserInfoService, private dialog:MatDialog) {

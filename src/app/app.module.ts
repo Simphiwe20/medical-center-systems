@@ -33,6 +33,7 @@ import { DetailsComponent } from './components/Popups/details/details.component'
 import { AvailComponent } from './components/avail/avail.component';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
+import { TodayTableComponent } from './components/Popups/today-table/today-table.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { AddAvailComponent } from './components/Popups/add-avail/add-avail.compo
     DetailsComponent,
     AvailComponent,
     DatePickerComponent,
-    AddAvailComponent
+    AddAvailComponent,
+    TodayTableComponent
 
   ],
   imports: [
