@@ -7,7 +7,7 @@
     </div>
     <div class="underline"></div>
     <div class="btn">
-        <button mat-raised-button color="warn"> Delete</button>
+        <button mat-raised-button color="warn" (click)="userDetails()"> Delete</button>
         <button mat-raised-button color="primary">Edit</button>
     </div>
     <div class="user-details ">
@@ -15,13 +15,11 @@
             <img src="../../../assets/images/doctor.png" alt="">
         </div>
         <div class="profile-details">
-            <p><b class="title">ID :</b>0987654323456789</p>
-            <p><b class="title">Name and Surname :</b>qwert wertyuio</p>
-            <p><b class="title">Gender :</b>sdfgh </p>
-            <p><b class="title">Blood Group :</b>00bv+</p>
-            <p><b class="title">Symptoms :</b>Smoking weed</p>
-            <p><b class="title">Mobile Number :</b>1011</p>
-            <p><b class="title">Email :</b>ytrertyrwsdfghjk</p>
+            <p><b class="title">fullName:</b> {{users.fullName}}</p>
+            <p><b class="title">Email: </b>{{users.email}}</p>
+            <p><b class="title"> ID number:</b>{{users.identityNO}}</p>
+            <p><b class="title">role: </b>{{users.role}}</p>
+            <p><b class="title"> contact: </b>{{users.contact}}</p>
         </div>
     </div>
 </div>
