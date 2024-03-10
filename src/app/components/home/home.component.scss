@@ -27,6 +27,7 @@
         height: 20%;
         width: 80%;
         margin-top: 54px;
+        cursor: pointer;
 
         img{
             border-radius: 50%;
@@ -145,9 +146,6 @@ a:hover mat-icon {
     padding: 0;
 }
 
-// .mtop6em {
-//     // margin-top: 6em;
-// }
 
 .medicalLogo {
     height: 100%;
@@ -156,16 +154,6 @@ a:hover mat-icon {
     img {
         height: 80%;
         width: 80%;
-    }
-}
-
-.left {
-    width: auto;
-    height: 80%;
-
-    .line {
-        border-left: 2px solid white;
-        height: 90%;
     }
 }
 
@@ -188,3 +176,19 @@ a:hover mat-icon {
     }
     
 }
+
+.routed-content{
+    overflow-y: hidden;
+    // margin: 20px;
+    width: 90%;
+    height: 90%;
+    // background-color: yellow;
+}
+
+.content{
+    // background-color: red;
+    width: 90%;
+    height: 95%;
+    // overflow: hidden;
+}
+

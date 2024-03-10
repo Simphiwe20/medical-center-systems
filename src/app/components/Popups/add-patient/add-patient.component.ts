@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { json } from 'express';
 
 @Component({
   selector: 'app-add-patient',
-  templateUrl: './add-patient.component.html', 
+  templateUrl: './add-patient.component.html',
   styleUrls: ['./add-patient.component.scss']
 })
 export class AddPatientComponent {
   bloogDroup: any[] = ['AB+', 'A+', 'B+', 'C+', 'AB', 'A-', 'B-', 'O-']
-  _medicalAid: any []=['Yes', 'No']
+  _medicalAid: any[] = ['Yes', 'No']
+  gender:any[]=['male','femal']
+  patientData: any[] = []
   patientForm: FormGroup
 
   constructor(private dialogRef: MatDialog, private snackbar: MatSnackBar) {
@@ -34,27 +37,18 @@ export class AddPatientComponent {
   ];
 
   save() {
-    localStorage.setItem('patients', JSON.stringify(this.patientForm.value))
-    // let _patientDetails = localStorage.getItem('patients');
-    const patient = JSON.parse(this.patientForm.value) || []
-    console.log(patient)
+    let savedValue = localStorage.setItem('patient', JSON.stringify(this.patientForm.value))
+    let _users = localStorage.getItem('patient');
+    const users = _users ? JSON.parse(_users) : [];
 
-    if (this.patientForm.valid == true) {
-      const foundPatient = patient.find((patient: any) => patient.email === this.patientForm.controls['email'].value);
-      this.snackbar.open('Patient already exist')
-    } else {
 
-      patient.push(this.patientForm.value);
-      localStorage.setItem('Patient', JSON.stringify(patient))
-      this.snackbar.open('Patient added succesfully')
+    localStorage.setItem('patient', JSON.stringify(users))
 
-    }
-  }
-
-  close() {
-    this.patientForm.reset()
     this.dialogRef.closeAll()
+
+  }
+  resetForm() {
+    this.dialogRef.closeAll();
   }
 }
-
 

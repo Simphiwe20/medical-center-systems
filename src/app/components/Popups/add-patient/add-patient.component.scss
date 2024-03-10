@@ -60,11 +60,19 @@ body{
 .padding-1em{
     padding: 1em;
     box-sizing: border-box;
-}
-.cancel:hover{
-background-color:red;
    
 }
-.submit:hover{
-    background-color: red;
+
+button {
+    margin-bottom: 20px;
+    width: 150px;
+    height: 40px !important;
 }
+button:hover{
+    // background-color: red;
+    background-color: aqua;
+    color: black;
+    border: 2px solid;
+    font-size: smaller;
+}
+
