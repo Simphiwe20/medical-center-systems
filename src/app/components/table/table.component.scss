@@ -8,9 +8,7 @@
     height: 50px;
 }
 
-.text-center {
-    text-align: center;
-}
+
 
 .flex {
     display: flex;
@@ -55,8 +53,7 @@ button:hover{
 .margin-bottom{
     margin-bottom: 20px;
 }
-.mat-sort-header-container ,.mat-focus-indicator{
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center;
-}
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+ }

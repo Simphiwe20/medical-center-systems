@@ -4,6 +4,7 @@ import { AddPatientComponent } from '../add-patient/add-patient.component';
 import { saveAs } from 'file-saver';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +18,8 @@ export class DetailsComponent {
   doctorEmail!: string;
   isDoctor: boolean = false;
   isAdmin: boolean = false;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private matDialog: MatDialog, private matdialogRef: MatDialogRef<DetailsComponent>, private snackbar: MatSnackBar) {
+  isReceptionist: boolean = false;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private matDialog: MatDialog, private matdialogRef: MatDialogRef<DetailsComponent>, private snackbar: MatSnackBar, private localDetails: UserInfoService) {
     let _usersD = sessionStorage.getItem('currentUser');
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
@@ -32,8 +34,13 @@ export class DetailsComponent {
     if (currentUser.role === 'admin') {
       this.isAdmin = true
     }
+    if (currentUser.role === 'receptionist') {
+      this.isReceptionist = true
+    }
   }
   details: any = this.data
+  localPatients = this.localDetails.get('patients', 'local')
+  localData = this.localDetails.get('users', 'local');
   PrescriptionFormdata: any = {
 
   }
@@ -70,7 +77,7 @@ export class DetailsComponent {
     // save description to local storage/database
     this.prescriptions.push(patientPrescriptions)
     console.log(this.prescriptions)
-    localStorage.setItem('prescriptions',JSON.stringify(this.prescriptions))
+    localStorage.setItem('prescriptions', JSON.stringify(this.prescriptions))
     // Convert the document content to a Blob
     const blob = new Blob([documentContent], { type: 'file' });
 
@@ -80,7 +87,17 @@ export class DetailsComponent {
     this.matdialogRef.close();
   }
 
-  delete(): void {
+  Delete(data: any): void {
+    if (this.isReceptionist) {
+      this.localPatients = this.localPatients.filter((item: any) => item.id != data.id)
+      this.localDetails.store(this.localPatients, 'patients', 'local')
+    }
+
+    this.localData = this.localData.filter((item: any) => item.id != data.id)
+    this.localDetails.store(this.localData, 'users', 'local')
+    this.snackbar.open("user has been deleted successfully", "OK")
+    this.matdialogRef.close()
+
 
   }
   edit(received: any) {
