@@ -57,13 +57,13 @@
         <div class="flex gap full-width">
           <div class="half-width">
             <mat-form-field appearance="fill">
-              <mat-label>Blood Group</mat-label>
+              <mat-label>Bood Group</mat-label>
               <mat-select formControlName="blood">
                 <mat-option *ngFor="let blood of bloogDroup" [value]="blood">{{blood}}</mat-option>
               </mat-select>
-              <mat-error *ngIf="patientForm.get('blood')?.hasError('required')">
+              <!-- <mat-error *ngIf="patientForm.get('blood')?.hasError('required')">
                 Blood type is <strong>required</strong>
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </div>
           <div>

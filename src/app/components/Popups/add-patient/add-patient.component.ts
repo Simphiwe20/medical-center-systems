@@ -22,10 +22,10 @@ export class AddPatientComponent {
       email: new FormControl('', [Validators.required, Validators.pattern(/^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/)]),
       cellNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       id: new FormControl(Number, [Validators.required, Validators.minLength(13), Validators.minLength(13)]),
-      symptoms: new FormControl('', [Validators.required]),
+      symptoms: new FormControl('' ),
       address: new FormControl('', [Validators.required]),
       dob: new FormControl(false, [Validators.required]),
-      blood: new FormControl('', [Validators.required]),
+      blood: new FormControl(''),
       medicalAid: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required])
     })
