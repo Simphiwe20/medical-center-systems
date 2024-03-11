@@ -24,7 +24,7 @@ export class SchedulesComponent implements OnInit {
 
     setTimeout(() => {
       this.doc = this.sharedServ.availDoc
-    }, 3000)
+    }, 5000)
     console.log(this.doc)
   }
 

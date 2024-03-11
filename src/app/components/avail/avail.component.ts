@@ -128,7 +128,7 @@ export class AvailComponent {
               })
             el['status'] = 'Rejected'
             // this.rejectedSchedule.el()
-            let schedules = this.userInfor.get('schedules', 'local').filter((day: any) => day.id == el.id)
+            let schedules = this.userInfor.get('schedules', 'local').filter((day: any) => day.id !== el.id)
             // this.userInfor.store(schedules, 'schedules', 'local')
             // this.updateSchedule()
             this.dataSource = schedules

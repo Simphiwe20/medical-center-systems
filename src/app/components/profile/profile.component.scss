@@ -1,99 +1,61 @@
-
-.day-container {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px grey solid;
+.main-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.m-b-10 {
-    margin-top: 10px;
+mat-card{
+    margin-top: 1em;
+    height: 80%;
+    width: 80%;
+    border: 1px solid #7575ff;
 }
 
-.times {
-    left: 200px
+.header{
+    background-color: #7575ff;
+    color: white;
+    height: 3em;
 }
 
-input {
-    height: 30px;
+.info-container{
+    height: 100%;
+    width: 100%;
 }
 
-.end {
-    align-items: end;
+.info{
+    margin-top: 4em;
 }
 
-.pointer {
+.info h3{
+    border: 1px solid #7575ff;
+    background-color: #7575ff69;
+    height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.info h3:hover{
+    color: rgb(48, 3, 48);
+    background-color: #7575ff;
     cursor: pointer;
 }
 
-.avail {
-    background-color: green;
-}
-
-.unavail {
-    background-color: red;
-}
-
-.unavail-p {
-    color: red;
-    
-}
-
-.no-margin {
-    margin: 0;
-}
-
-.height-80 {
-    height: 80%;
-}
-
-.removeTimer {
-    &::-webkit-calendar-picker-indicator {
-    background: none;
-  }
-    border: none;
-    padding: 0;
-    // width: 30px;
-}
-
-.width-25 {
-    width: 25%;
-    button {
-        width: 33px;
-        height: 33px;
-    }
-}
-
-.end-center {
-    justify-content: end;
-    align-items: center;
-}
-
-.width-80 {
+.right{
     width: 80%;
 }
 
-.no-margin {
-    margin: 0;
+.left{
+    width: 18%;
 }
 
-.m-t-10 {
-    margin-top: 10px;
+.left button:hover{
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
 }
 
-.p-l-10 {
-    padding: 10px;
-    font-size: medium;
-}
-
-.unavail-p {
-    color: red;   
-}
-
-.pic {
-    img {
-        border-radius: 50%;
-        width: 70px;
-        height: 70px;
-    }
+.CP{
+    margin-top: 2em;
 }

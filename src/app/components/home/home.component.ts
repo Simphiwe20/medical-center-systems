@@ -13,6 +13,7 @@ export class HomeComponent {
   user: any;
   menuItems: any[] = [];
 
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -46,6 +47,7 @@ export class HomeComponent {
         { label: 'schedule', icon: 'event_available', route: '/home/schedules' },
         { label: 'patient', icon: 'personal_injury', route: '/home/patient'},
         { label: 'availability', icon: 'group', route: '/home/availability'},
+        { label: 'profile', icon: 'person', route: '/home/profile' },
       ]
     }
   }
@@ -54,5 +56,7 @@ export class HomeComponent {
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
+  
+
 
 }

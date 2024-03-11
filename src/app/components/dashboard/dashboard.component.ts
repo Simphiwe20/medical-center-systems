@@ -44,7 +44,7 @@ export class DashboardComponent {
 
 
     if (this.user.role === 'doctor') {
-      this.dataSource = this.approvedSchedule = this.userService.get('approvedSchedules','local')
+      this.dataSource = this.approvedSchedule = this.userService.get('approvedSchedule','local')
     }else {
       this.dataSource = this.userService.get('schedules', 'local')
     }
