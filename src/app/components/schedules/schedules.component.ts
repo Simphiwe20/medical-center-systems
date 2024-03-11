@@ -14,7 +14,7 @@ export class SchedulesComponent implements OnInit {
   // Define the type for alert_opts
   alert_opts: { key: string, label: string, disabled: boolean }[] = [
     { key: 'Simphiwe', label: 'Simphiwe', disabled: true },
-    { key: 'Kea', label: 'Kea', disabled:false },
+    { key: 'Kea', label: 'Kea', disabled: false },
   ];
 
   events: any[] = [];
@@ -30,6 +30,7 @@ export class SchedulesComponent implements OnInit {
       { name: "time", height: 72, type: "time", map_to: "auto", color: 'yellow' }
     ];
 
+    const currentDate = new Date();
     const date = new Date().getDay()
     console.log(new Date)
 
@@ -44,9 +45,25 @@ export class SchedulesComponent implements OnInit {
       scheduler.parse(parsedEvents);
     }
 
+    const eventsForDay = scheduler.getEvents(currentDate, currentDate);
+
+    // Count the number of events (appointments) for the day
+    const appointmentsCountDay = eventsForDay.length;
+    console.log('Appointments for the day:', appointmentsCountDay);
+
+    // Get events for the current month
+    const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+    const eventsForMonth = scheduler.getEvents(firstDayOfMonth, lastDayOfMonth);
+
+    // Count the number of events (appointments) for the month
+    const appointmentsCountMonth = eventsForMonth.length;
+    console.log('Appointments for the month:', appointmentsCountMonth);
+
+
     scheduler.attachEvent('onEventChanged', (id, event) => {
       console.log('Event Changed:', id, event.text);
-      
+
       // Update the event in the local storage
       const index = this.events.findIndex((item) => item.id === id);
       if (index !== -1) {
@@ -58,6 +75,6 @@ export class SchedulesComponent implements OnInit {
     scheduler.attachEvent('onEventAdded', (id, event) => {
       this.events.push(event);
       localStorage.setItem('schedules', JSON.stringify(this.events));
-    });    
+    });
   }
 }
