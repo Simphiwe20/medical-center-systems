@@ -34,9 +34,9 @@
               <mat-form-field appearance="fill">
                 <mat-label>Gender</mat-label>
                 <mat-select formControlName="gender">
-                  <mat-option *ngFor="let gender of genders" [value]="gender.value" formArrayName="gender">
-                    {{gender.viewValue}}
-                  </mat-option>
+                  <!-- <mat-option *ngFor="let gender of gender" [value]="gender.value" formArrayName="gender"> -->
+                     <!-- {{gender.viewValue}} -->
+                  <!-- </mat-option> -->
                 </mat-select>
                 <mat-error *ngIf="addPatient.get('gender')?.hasError('required')">
                   Gender is <strong>required</strong>
@@ -59,7 +59,7 @@
               <mat-form-field appearance="fill">
                 <mat-label>Bood Group</mat-label>
                 <mat-select formControlName="blood">
-                  <mat-option *ngFor="let blood of bloodGroup" [value]="blood">{{bloodGroup}}</mat-option>
+                  <!-- <mat-option *ngFor="let blood of bloodGroup" [value]="blood">{{bloodGroup}}</mat-option> -->
                 </mat-select>
                 <!-- <mat-error *ngIf="addPatient.get('blood')?.hasError('required')">
                   Blood type is <strong>required</strong>
