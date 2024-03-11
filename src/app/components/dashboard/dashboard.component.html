@@ -26,6 +26,7 @@
       </mat-card>
       <mat-card class="full-width flex-1" *ngIf="user.role === 'doctor'">
         <mat-card-content>Approved appointments</mat-card-content>
+        <app-today-table></app-today-table>
       </mat-card>
     </div>
     <mat-card class="large-card flex-1 full-width">
