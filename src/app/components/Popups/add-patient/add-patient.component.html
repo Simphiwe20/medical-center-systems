@@ -1,0 +1,108 @@
+
+<mat-card class="main-container">
+    <form [formGroup]="addPatient">
+        <div>
+            <h3 class="flex center-center">
+                Add Patient Form
+            </h3>
+        </div>
+        <div class="gap-1 flex column ">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Full Name</mat-label>
+                <input type="text" matInput formControlName="fullName" placeholder="Nicholas Maluleka" required>
+                <mat-error *ngIf="addPatient.get('fullName')?.hasError('required')">
+                    full name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ex. lesetjamaluleka@gmail.com" required>
+                <mat-error *ngIf="addPatient.get('email')?.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error>
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                </mat-select >
+            </mat-form-field>
+
+            <div class=" flex gap-1">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Date of Birth</mat-label>
+                    <input type="date" matInput formControlName="DOB" placeholder="YYYY-MM-DD" required>
+                    <mat-error>
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>ID number</mat-label>
+                    <input type="email" matInput formControlName="identityNO" placeholder="9801115169080" required>
+                    <mat-error>
+                        ID number is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class=" flex gap-1">
+                <mat-form-field appearance="fill">
+                    <mat-label>Medical Aid</mat-label>
+                    <mat-select formControlName="medicalAid">
+                        <mat-option value="option1">Yes</mat-option>
+                        <mat-option value="option2">No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" *ngIf="addPatient.get('medicalAid')?.value === 'option1'">
+                    <mat-label>Medical Aid number</mat-label>
+                    <input type="email" matInput formControlName="medicalAidNO" placeholder="43654743754" required>
+                    <mat-error>
+                        Medical Aid number is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" *ngIf="addPatient.get('medicalAid')?.value === 'option2'">
+                    <mat-label>Bank Card Number</mat-label>
+                    <input type="email" matInput formControlName="cardNO" placeholder="43654743754" required>
+                    <mat-error>
+                        Bank Card Number number is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Blood Group</mat-label>
+                <mat-select formControlName="bloodGroup">
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="AB">AB</mat-option>
+                    <mat-option value="O">O</mat-option>
+                    <mat-option value="N/A">N/A</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Contact</mat-label>
+                <input type="email" matInput formControlName="contact" placeholder="Ex. pat@example.com" required>
+                <mat-error>
+                    Contact details are <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        
+        <div class="flex center-center gap-1 buttons">
+            <button mat-raised-button color="warn">Cancel</button>
+            <button mat-raised-button (click)="isUpdate? update() :submit()" >{{isUpdate? "Update" : "Submit"}}</button>
+        </div>
+        </div>
+
+    </form>
+</mat-card>
