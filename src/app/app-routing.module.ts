@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: 'schedules', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
-    {path: 'doctors', component: DoctorsComponent , canActivate :[DoctorsGuard]} ,
+    {path: 'doctors', component: DoctorsComponent } ,
     {path: 'schedule', component: SchedulesComponent},
     {path: 'patient', component: PatientComponent},
     {path: 'availability', component: AvailComponent},

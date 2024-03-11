@@ -47,6 +47,7 @@ export class HomeComponent {
         { label: 'schedule', icon: 'event_available', route: '/home/schedules' },
         { label: 'patient', icon: 'personal_injury', route: '/home/patient'},
         { label: 'availability', icon: 'group', route: '/home/availability'},
+        { label: 'profile', icon: 'person', route: '/home/profile' },
       ]
     }
   }

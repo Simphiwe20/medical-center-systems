@@ -16,7 +16,7 @@ export class UsersComponent {
       title: '',
       dataSource: this.localData.get('users','local'),
       displayedColumns: ['fullName', 'email', 'identityNO', 'gender', 'role', 'contact'],
-      displayedHeaders: ['Full Names', 'email', 'ID number', 'Gender', 'Role', 'contact']
+      displayedHeaders: ['Full Names', 'Email', 'ID number', 'Gender', 'Role', 'Contact']
     }
   }
 

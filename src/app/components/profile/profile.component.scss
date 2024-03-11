@@ -1,28 +1,43 @@
-
-.day-container {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px grey solid;
+.main-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.m-b-10 {
-    margin-top: 10px;
+mat-card{
+    margin-top: 1em;
+    height: 80%;
+    width: 80%;
+    border: 1px solid #7575ff;
 }
 
-.times {
-    left: 200px
+.header{
+    background-color: #7575ff;
+    color: white;
+    height: 3em;
 }
 
-input {
-    height: 30px;
+.info-container{
+    height: 100%;
+    width: 100%;
 }
 
-.end {
-    align-items: end;
+.info{
+    margin-top: 4em;
 }
 
-.pointer {
+.info h3{
+    border: 1px solid #7575ff;
+    background-color: #7575ff69;
+    height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.info h3:hover{
+    color: rgb(48, 3, 48);
+    background-color: #7575ff;
     cursor: pointer;
 }
 

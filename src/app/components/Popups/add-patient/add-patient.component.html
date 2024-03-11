@@ -46,9 +46,16 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>ID number</mat-label>
-                    <input type="email" matInput formControlName="identityNO" placeholder="9801115169080" required>
-                    <mat-error>
+                    <input type="number" matInput formControlName="identityNO" 
+                    placeholder="9801115169080" required>
+                    <mat-error *ngIf="addPatient.get('identityNO')?.hasError('required')">
                         ID number is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addPatient.get('identityNO')?.hasError('maxlength')">
+                        ID number Should have 13 numbers
+                    </mat-error>
+                    <mat-error *ngIf="addPatient.get('identityNO')?.hasError('minlength')">
+                        ID number Should have 13 numbers
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -64,7 +71,7 @@
 
                 <mat-form-field class="example-full-width" *ngIf="addPatient.get('medicalAid')?.value === 'option1'">
                     <mat-label>Medical Aid number</mat-label>
-                    <input type="email" matInput formControlName="medicalAidNO" placeholder="43654743754" required>
+                    <input type="number" matInput formControlName="medicalAidNO" placeholder="43654743754" required>
                     <mat-error>
                         Medical Aid number is <strong>required</strong>
                     </mat-error>
@@ -72,7 +79,7 @@
 
                 <mat-form-field class="example-full-width" *ngIf="addPatient.get('medicalAid')?.value === 'option2'">
                     <mat-label>Bank Card Number</mat-label>
-                    <input type="email" matInput formControlName="cardNO" placeholder="43654743754" required>
+                    <input type="number" matInput formControlName="cardNO" placeholder="43654743754" required>
                     <mat-error>
                         Bank Card Number number is <strong>required</strong>
                     </mat-error>
@@ -99,7 +106,7 @@
             </mat-form-field>
         
         <div class="flex center-center gap-1 buttons">
-            <button mat-raised-button color="warn">Cancel</button>
+            <button mat-raised-button color="warn" (click)="close()">Cancel</button>
             <button mat-raised-button (click)="isUpdate? update() :submit()" >{{isUpdate? "Update" : "Submit"}}</button>
         </div>
         </div>

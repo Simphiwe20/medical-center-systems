@@ -16,7 +16,7 @@ export class PatientComponent {
         title: 'Patient',
         dataSource:this.shared.get('patients','local'),
         displayedColumns: ['fullName', 'email', 'identityNO','gender','bloodGroup','contact'],
-        displayedHeaders: ['Full Names', 'email', 'ID number','Gender','Blood Group','contact']
+        displayedHeaders: ['Full Names', 'Email', 'ID number','Gender','Blood Group','Contact']
       }
   }
 

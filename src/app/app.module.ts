@@ -33,6 +33,7 @@ import { AvailComponent } from './components/avail/avail.component';
 import { DatePickerComponent } from './components/Popups/date-picker/date-picker.component';
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TimeComponent } from './components/Popups/time/time.component';
 import { TodayTableComponent } from './components/Popups/today-table/today-table.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -60,6 +61,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     DatePickerComponent,
     AddAvailComponent,
     rejectReasonComponent,
+    TimeComponent,
     TodayTableComponent,
     PageNotFoundComponent
 

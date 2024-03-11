@@ -42,7 +42,7 @@ export class TableComponent implements OnChanges {
     let _usersD = sessionStorage.getItem('currentUser');
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
-    // console.log(currentUser.role)
+    console.log(currentUser.role)
 
     if (currentUser.role === 'doctor') {
       this.isDoctor = true;
@@ -123,36 +123,40 @@ export class TableComponent implements OnChanges {
 
           this.mynew.forEach(((newUser: any) => {
             users.push(newUser)
+            this.api.genericPost('/sendPassword', newUser)
+              .subscribe({
+                next: (res) => { console.log(res) },
+                error: (err) => { console.log(err) },
+                complete: () => { }
+              })
           }))
-          // localStorage.setItem('users', JSON.stringify(users))
-          //     this.api.genericPost('/user', this.users)
-          // .subscribe({
-          //   next: (res: any) => {
-          //     this.users.reset();
-          //     console.log(res)
-          //   },
-          //   error: (err: any) => this.snackBar.open(err.error, 'Ok', { duration: 3000 }),
-          //   complete: () => { }
-          // })
-          this.api.genericPost('/sendPassword', users[users.length - 1])
+
+          localStorage.setItem('users', JSON.stringify(users))
+          this.mynew.forEach((user: any) => {
+            
+          })
+          users.forEach((_user: any) => {
+            this.api.genericPost('/sendPassword', _user)
             .subscribe({
               next: (res) => { console.log(res) },
               error: (err) => { console.log(err) },
               complete: () => { }
             })
+          })
+          
+        this.dataSource = this.userInfor.get('users', 'local')
         } else {
-          console.log("else working")
           localStorage.setItem('users', JSON.stringify(this.spreadsheetData))
         }
 
 
-      })
+  })
 
-    }
+}
   }
-  details(receivedData: any): void {
-    console.log("recived data", receivedData)
+details(receivedData: any): void {
+  console.log("recived data", receivedData)
     this.matDialog.open(DetailsComponent, { data: receivedData })
-  }
+}
 }
 
