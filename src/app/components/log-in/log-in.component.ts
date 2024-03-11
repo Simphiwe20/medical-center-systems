@@ -14,20 +14,38 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 export class LogInComponent {
 
   loginForm: FormGroup;
+  user: any;
 
   constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar) {
+
+
+    this.user = this.sharedService.get('users', 'local')
+    if (!this.user) {
+      this.sharedService.store([{
+        fullName: 'Built-In Admin',
+        email: 'admin@medicalcenter.ac.za',
+        role: 'admin',
+        phoneNumber: null,
+        address: null,
+        password: 'admin@12'
+      }], 'users', 'local')
+    }
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
 
     })
+
+    
   }
 
   submit(): void {
     // Fetch all users
     let _users = localStorage.getItem('users');
     const users = _users ? JSON.parse(_users) : [];
+
+
 
     if (this.loginForm.valid) {
       // Check if user exists
@@ -46,7 +64,8 @@ export class LogInComponent {
       }
     }
   }
-  resetForm() {
+
+resetForm() {
     this.loginForm.reset();
   }
 }

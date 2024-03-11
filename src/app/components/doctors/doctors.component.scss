@@ -20,6 +20,14 @@
     align-items: center !important;
 }
 
+.aic{
+    align-items: center;
+}
+
+.jcc{
+    justify-content: center;
+}
+
 .gap05em {
     gap: 0.5em;
 }
@@ -95,6 +103,11 @@
                     justify-content: end;
                     align-items: center;
 
+                    mat-icon{
+                        height: 90%;
+                        width: 70%;
+                        font-size: 82px;
+                    }
 
                     img {
                         height: 90%;

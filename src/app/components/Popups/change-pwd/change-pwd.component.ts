@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './change-pwd.component.html',
   styleUrls: ['./change-pwd.component.scss']
 })
+
 export class ChangePwdComponent {
   // hide = true;
   // resetPasswordForm: FormGroup

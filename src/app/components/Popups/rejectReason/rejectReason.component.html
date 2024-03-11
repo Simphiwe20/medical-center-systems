@@ -1,0 +1,10 @@
+<div class="flex column gap05 padding-15">
+    <p class="text-center" (click)="close()">X</p>
+    <mat-form-field appearance="fill" class="flex column gap05">
+        <mat-label>Reason for rejecting?</mat-label>
+        <input matInput [(ngModel)]="name">
+    </mat-form-field>
+    <div class="flex center-center">
+        <button mat-raised-button color="primary" (click)="reject()">Reject</button>
+    </div>
+</div>

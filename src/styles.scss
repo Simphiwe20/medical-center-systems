@@ -29,6 +29,10 @@ body {
     align-items: center;
 }
 
+.spacebetween {
+    justify-content: space-between;
+}
+
 .column {
     flex-direction: column;
 }
@@ -59,6 +63,9 @@ body {
     height: 50%;
 }
 
+.flex-1 {
+    flex: 1;
+}
 
 // Styling materials components
 
@@ -73,6 +80,7 @@ body {
     width: 100%;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-mdc-card-content {
+    padding: 0 !important;
+    display: flex !important;
+}
