@@ -102,14 +102,6 @@ export class TableComponent implements OnChanges {
         const users = _users ? JSON.parse(_users) : [];
         let doesUserExist: boolean;
 
-<<<<<<< HEAD
-
-        this.currentUser = users[3]
-        console.log("this is a current User", this.currentUser)
-        sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser))
-
-=======
->>>>>>> c00e377cd39d3f01fcae0bd98530b5dbb91c1270
         console.log(users)
         if (users.length > 0) {
           this.spreadsheetData.forEach((item: any) => {
@@ -122,20 +114,10 @@ export class TableComponent implements OnChanges {
             });
             if (!doesUserExist) {
               this.mynew.push({
-<<<<<<< HEAD
-                fullName: item.fullName,
-                email: item.email,
-                role: item.role === 'receptionist' ? 'receptionist' : 'doctor',
-                phoneNumber: item.cellNumber,
-                address: item.address,
-                password: this.userInfor.generatePwd()
-              })
-=======
                 ...item,
                 password: this.userInfor.generatePwd(),
                 id: new Date().getTime()
               })      
->>>>>>> c00e377cd39d3f01fcae0bd98530b5dbb91c1270
             }
           });
 
