@@ -48,9 +48,9 @@ export class TableComponent implements OnChanges {
     let _usersD = sessionStorage.getItem('currentUser');
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
-    console.log(currentUser.role)
-  
-    if(currentUser.role === 'doctor'){
+    // console.log(currentUser.role)
+
+    if (currentUser.role === 'doctor') {
       this.isDoctor = true;
     }
 
@@ -109,8 +109,8 @@ export class TableComponent implements OnChanges {
 
 
         this.currentUser = users[3]
-        console.log("this is a current User",this.currentUser)
-        sessionStorage.setItem('currentUser',JSON.stringify(this.currentUser))
+        console.log("this is a current User", this.currentUser)
+        sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser))
 
         console.log(users)
         if (users.length > 0) {
@@ -132,19 +132,28 @@ export class TableComponent implements OnChanges {
                 phoneNumber: item.cellNumber,
                 address: item.address,
                 password: this.userInfor.generatePwd()
-              })      
+              })
             }
           });
 
           this.mynew.forEach(((newUser: any) => {
             users.push(newUser)
           }))
-          localStorage.setItem('users', JSON.stringify(users))
+          // localStorage.setItem('users', JSON.stringify(users))
+          //     this.api.genericPost('/user', this.users)
+          // .subscribe({
+          //   next: (res: any) => {
+          //     this.users.reset();
+          //     console.log(res)
+          //   },
+          //   error: (err: any) => this.snackBar.open(err.error, 'Ok', { duration: 3000 }),
+          //   complete: () => { }
+          // })
           this.api.genericPost('/sendPassword', users[users.length - 1])
             .subscribe({
-              next: (res) => {console.log(res)},
-              error: (err) => {console.log(err)},
-              complete: () => {}
+              next: (res) => { console.log(res) },
+              error: (err) => { console.log(err) },
+              complete: () => { }
             })
           // console.log(users)
         } else {
