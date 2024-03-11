@@ -13,6 +13,7 @@ import { AvailComponent } from './components/avail/avail.component';
 import { DoctorsGuard } from './guards/doctors.guard';
 import { HomeGuard } from './guards/home.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
