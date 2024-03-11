@@ -10,7 +10,7 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>Full Name</mat-label>
-                <input type="email" matInput formControlName="fullName" placeholder="Nicholas Maluleka" required>
+                <input type="text" matInput formControlName="fullName" placeholder="Nicholas Maluleka" required>
                 <mat-error *ngIf="addPatient.get('fullName')?.hasError('required')">
                     full name is <strong>required</strong>
                 </mat-error>

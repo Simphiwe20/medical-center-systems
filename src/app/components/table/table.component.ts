@@ -102,12 +102,8 @@ export class TableComponent implements OnChanges {
         const users = _users ? JSON.parse(_users) : [];
         let doesUserExist: boolean;
 
-        // console.log("this is a current User",this.currentUser)
-        // sessionStorage.setItem('currentUser',JSON.stringify(this.currentUser))
-
         console.log(users)
         if (users.length > 0) {
-          // console.log("if working")
           this.spreadsheetData.forEach((item: any) => {
             doesUserExist = false;
             users.forEach((user: { email: any; }) => {
