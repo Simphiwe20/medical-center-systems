@@ -19,8 +19,8 @@
       </form>
 
     <div class="flex gap full-width end-center">
-        <button mat-raised-button class="btn" color="warn" *ngIf="!isDoctor" >Delete</button>
+        <button mat-raised-button class="btn" color="warn" *ngIf="!isDoctor" (click)="Delete(details)">Delete</button>
         <button mat-raised-button class="btn" color="accent" *ngIf="isDoctor" (click)="saveDocument(PrescriptionFormdata.prescription)">Download</button>
-        <button mat-raised-button class="btn" color="primary" (click)="edit(details)" *ngIf="!isDoctor">edit</button>
+        <button mat-raised-button class="btn" color="primary" (click)="edit(details)" *ngIf="isReceptionist">edit</button>
     </div>
 </div>

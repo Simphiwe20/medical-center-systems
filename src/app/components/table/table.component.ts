@@ -30,6 +30,7 @@ export class TableComponent implements OnChanges {
   new: any = [];
   mynew: any = [];
   currentUser!: any;
+  isToday:boolean=false;
 
 
 
@@ -38,13 +39,6 @@ export class TableComponent implements OnChanges {
 
   constructor(private matDialog: MatDialog, private snackbar: MatSnackBar, private userInfor: UserInfoService,
     private api: ApiServiceService) {
-    // this.new = localStorage.getItem('users')
-    // this.new = JSON.parse(this.new)
-
-    // let _users = localStorage.getItem('users');
-    // const users = _users ? JSON.parse(_users) : [];
-
-    // sessionStorage.setItem('currentUser',users[2])
     let _usersD = sessionStorage.getItem('currentUser');
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
@@ -59,8 +53,11 @@ export class TableComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.tableData.title == 'Patient') {
       this.isPatient = true;
-    } else {
+    } else if(this.tableData.title == 'today'){
       this.isPatient = false;
+      this.isToday = false
+    }else{
+      this.isPatient = false
     }
     if (changes['tableData']) {
       this.dataSource = new MatTableDataSource(this.tableData.dataSource);
@@ -77,7 +74,6 @@ export class TableComponent implements OnChanges {
   }
 
   applyFilter(event: Event) {
-    // console.log(this.dataSource)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -101,31 +97,32 @@ export class TableComponent implements OnChanges {
       convertedData.SheetNames.forEach(user => {
         const excelData = XLSX.utils.sheet_to_json(convertedData.Sheets[user])
         this.spreadsheetData = excelData;
-        // console.log(this.spreadsheetData)
 
         let _users = localStorage.getItem('users');
         const users = _users ? JSON.parse(_users) : [];
         let doesUserExist: boolean;
 
+<<<<<<< HEAD
 
         this.currentUser = users[3]
         console.log("this is a current User", this.currentUser)
         sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser))
 
+=======
+>>>>>>> c00e377cd39d3f01fcae0bd98530b5dbb91c1270
         console.log(users)
         if (users.length > 0) {
-          // console.log("if working")
           this.spreadsheetData.forEach((item: any) => {
             doesUserExist = false;
             users.forEach((user: { email: any; }) => {
 
               if (item.email === user.email) {
-                // console.log("found user", user.email)
                 doesUserExist = true;
               }
             });
             if (!doesUserExist) {
               this.mynew.push({
+<<<<<<< HEAD
                 fullName: item.fullName,
                 email: item.email,
                 role: item.role === 'receptionist' ? 'receptionist' : 'doctor',
@@ -133,6 +130,12 @@ export class TableComponent implements OnChanges {
                 address: item.address,
                 password: this.userInfor.generatePwd()
               })
+=======
+                ...item,
+                password: this.userInfor.generatePwd(),
+                id: new Date().getTime()
+              })      
+>>>>>>> c00e377cd39d3f01fcae0bd98530b5dbb91c1270
             }
           });
 
@@ -155,7 +158,6 @@ export class TableComponent implements OnChanges {
               error: (err) => { console.log(err) },
               complete: () => { }
             })
-          // console.log(users)
         } else {
           console.log("else working")
           localStorage.setItem('users', JSON.stringify(this.spreadsheetData))

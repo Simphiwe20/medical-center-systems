@@ -16,7 +16,7 @@ export class TodayTableComponent {
     this.todayTable = 
   {
 
-    title: 'Patient',
+    title: 'today',
     dataSource: this.getdata.get('schedules','local'),
     displayedColumns: ['Patient_name', 'start_date','end_date','text', 'status'],
     displayedHeaders: ["Patient's Name",'From','To','Appointment name', 'status']

@@ -4,7 +4,7 @@
             <mat-label>Search {{isPatient ? 'Patient' : 'Users'}}</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
-
+        <div></div>
         <button mat-raised-button color="primary" *ngIf="!isDoctor" (click)="isPatient? patient() : upload.click()">{{isPatient ? 'ADD Patient' : 'ADD User'}}</button>
         <input type="file" #upload hidden accept=".csv,.xlsx" (change)="User($event)">
     </div>
@@ -15,7 +15,7 @@
 
             <!--Columns -->
             <ng-container [matColumnDef]="header" *ngFor="let header of displayedColoms,let i= index">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>{{displayedHeaders[i]}}</b></th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> <b>{{displayedHeaders[i]}}</b></th>
                 <td mat-cell *matCellDef="let row" class="text-center" (dblclick)="details(row)"> {{row[header]}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColoms"></tr>
