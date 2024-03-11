@@ -49,8 +49,8 @@ export class TableComponent implements OnChanges {
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
     console.log(currentUser.role)
-  
-    if(currentUser.role === 'doctor'){
+
+    if (currentUser.role === 'doctor') {
       this.isDoctor = true;
     }
 
@@ -108,9 +108,9 @@ export class TableComponent implements OnChanges {
         let doesUserExist: boolean;
 
 
-        this.currentUser = users[3]
-        console.log("this is a current User",this.currentUser)
-        sessionStorage.setItem('currentUser',JSON.stringify(this.currentUser))
+        // this.currentUser = users[3]
+        // console.log("this is a current User", this.currentUser)
+        // sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser))
 
         console.log(users)
         if (users.length > 0) {
@@ -129,37 +129,43 @@ export class TableComponent implements OnChanges {
                 fullName: item.fullName,
                 email: item.email,
                 role: item.occupation === 'receptionist' ? 'receptionist' : 'doctor',
-                phoneNumber: item.cellNumber,
+                contact: item.cellNumber,
                 address: item.address,
+                identityNO: item.idNumber,
+                gender: item.gender,
                 password: this.userInfor.generatePwd()
-              })      
+              })
             }
           });
 
           this.mynew.forEach(((newUser: any) => {
             users.push(newUser)
+            this.api.genericPost('/sendPassword', newUser)
+              .subscribe({
+                next: (res) => { console.log(res) },
+                error: (err) => { console.log(err) },
+                complete: () => { }
+              })
           }))
+
           localStorage.setItem('users', JSON.stringify(users))
-          this.api.genericPost('/sendPassword', users[users.length - 1])
-            .subscribe({
-              next: (res) => {console.log(res)},
-              error: (err) => {console.log(err)},
-              complete: () => {}
-            })
-          // console.log(users)
-        } else {
-          console.log("else working")
-          localStorage.setItem('users', JSON.stringify(this.spreadsheetData))
-        }
+          this.dataSource = this.userInfor.get('users', 'local')
 
-
-      })
-
+      // console.log(users)
     }
+    // } else {
+    //   console.log("else working")
+    //   localStorage.setItem('users', JSON.stringify(this.spreadsheetData))
+    // }
+
+
+  })
+
+}
   }
-  details(receivedData: any): void {
-    console.log("recived data", receivedData)
+details(receivedData: any): void {
+  console.log("recived data", receivedData)
     this.matDialog.open(DetailsComponent, { data: receivedData })
-  }
+}
 }
 

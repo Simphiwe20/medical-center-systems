@@ -34,6 +34,7 @@ import { DatePickerComponent } from './components/Popups/date-picker/date-picker
 import { AddAvailComponent } from './components/Popups/add-avail/add-avail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TimeComponent } from './components/Popups/time/time.component';
+import { TodayTableComponent } from './components/Popups/today-table/today-table.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { TimeComponent } from './components/Popups/time/time.component';
     DatePickerComponent,
     AddAvailComponent,
     rejectReasonComponent,
-    TimeComponent
+    TimeComponent,
+    TodayTableComponent
 
   ],
   imports: [

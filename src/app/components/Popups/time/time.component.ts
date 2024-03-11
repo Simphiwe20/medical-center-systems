@@ -12,6 +12,7 @@ export class TimeComponent {
   availHours: any = {startTime: '', endTime: ''}
 
   constructor(private dialogRef: MatDialogRef<TimeComponent>, private snackBar: MatSnackBar) {}
+  
   save(): any {
     if(!this.availHours.startTime || !this.availHours.endTime) {
       this.snackBar.open('Please add both times to avail yourself', 'OK', {duration: 3000})

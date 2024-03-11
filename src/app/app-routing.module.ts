@@ -10,6 +10,7 @@ import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DoctorsComponent } from './components/doctors/doctors.component';
 import { AvailComponent } from './components/avail/avail.component';
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
