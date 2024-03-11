@@ -38,13 +38,7 @@ export class TableComponent implements OnChanges {
 
   constructor(private matDialog: MatDialog, private snackbar: MatSnackBar, private userInfor: UserInfoService,
     private api: ApiServiceService) {
-    // this.new = localStorage.getItem('users')
-    // this.new = JSON.parse(this.new)
 
-    // let _users = localStorage.getItem('users');
-    // const users = _users ? JSON.parse(_users) : [];
-
-    // sessionStorage.setItem('currentUser',users[2])
     let _usersD = sessionStorage.getItem('currentUser');
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
@@ -77,7 +71,6 @@ export class TableComponent implements OnChanges {
   }
 
   applyFilter(event: Event) {
-    // console.log(this.dataSource)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -101,7 +94,6 @@ export class TableComponent implements OnChanges {
       convertedData.SheetNames.forEach(user => {
         const excelData = XLSX.utils.sheet_to_json(convertedData.Sheets[user])
         this.spreadsheetData = excelData;
-        // console.log(this.spreadsheetData)
 
         let _users = localStorage.getItem('users');
         const users = _users ? JSON.parse(_users) : [];
@@ -114,13 +106,11 @@ export class TableComponent implements OnChanges {
 
         console.log(users)
         if (users.length > 0) {
-          // console.log("if working")
           this.spreadsheetData.forEach((item: any) => {
             doesUserExist = false;
             users.forEach((user: { email: any; }) => {
 
               if (item.email === user.email) {
-                // console.log("found user", user.email)
                 doesUserExist = true;
               }
             });
@@ -146,7 +136,6 @@ export class TableComponent implements OnChanges {
               error: (err) => {console.log(err)},
               complete: () => {}
             })
-          // console.log(users)
         } else {
           console.log("else working")
           localStorage.setItem('users', JSON.stringify(this.spreadsheetData))

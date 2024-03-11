@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-// import { scheduler } from 'dhtmlx-scheduler';
 import { scheduler } from 'dhtmlx-scheduler';
 import * as Papa from 'papaparse'
 
@@ -20,8 +19,6 @@ export class SchedulesComponent implements OnInit {
   doc!: any;
 
   constructor(){
-    console.log(this.doc)
-    
   }
 
   

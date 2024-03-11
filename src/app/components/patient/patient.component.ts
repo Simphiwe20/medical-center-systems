@@ -28,6 +28,7 @@ export class PatientComponent {
         displayedColumns: ['fullName', 'email', 'identityNO','gender','bloodGroup','contact'],
         displayedHeaders: ['Full Names', 'email', 'ID number','Gender','Blood Group','contact']
       }
+      
   }
 
 
