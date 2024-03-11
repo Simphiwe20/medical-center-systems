@@ -92,14 +92,14 @@ export class DetailsComponent {
       this.localPatients = this.localPatients.filter((item: any) => item.id != data.id)
       this.localDetails.store(this.localPatients, 'patients', 'local')
     }
-
-    this.localData = this.localData.filter((item: any) => item.id != data.id)
+    console.log(data)
+    this.localData = this.localData.filter((item: any) => item.email !== data.email)
+    console.log(this.localData)
     this.localDetails.store(this.localData, 'users', 'local')
     this.snackbar.open("user has been deleted successfully", "OK")
     this.matdialogRef.close()
-
-
   }
+  
   edit(received: any) {
     this.matDialog.open(AddPatientComponent, { data: received })
   }
