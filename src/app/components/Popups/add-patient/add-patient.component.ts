@@ -1,9 +1,9 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserInfoService } from 'src/app/services/user-info.service';
-
 
 @Component({
   selector: 'app-add-patient',
@@ -17,7 +17,7 @@ export class AddPatientComponent {
   patients: any = [];
   isUpdate: boolean = false;
 
-  constructor(private shared: UserInfoService, private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any, private matdialoRef:MatDialogRef<AddPatientComponent>,private matdialog:MatDialog) {
+  constructor(private shared: UserInfoService, private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any, private matdialoRef: MatDialogRef<AddPatientComponent>, private matdialog: MatDialog) {
 
     this.addPatient = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.pattern(/^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/)]),
@@ -38,38 +38,29 @@ export class AddPatientComponent {
       console.log("polulation", this.addPatient)
     }
 
+    this.patients = this.shared.get('patients', 'local')
   }
 
   submit() {
+      let foundPatient = this.patients.find((patient: any) => patient.email === this.addPatient.controls['email'].value)
+      if(foundPatient) {
+        this.snackbar.open('Patient already exists', 'OK', {duration: 3000})
+        return
+      }else {
+        this.patients.push(this.addPatient.value)
+        this.shared.store(this.patients, 'patients', 'local')
+  
+      }
+      this.matdialog.closeAll()
 
-    let existingPatients: any[] = this.shared.get('patients', 'local');
-    console.log(existingPatients);
-    if (existingPatients) {
-      existingPatients = existingPatients.map((element: any) => {
-        if (this.addPatient.value.email === element.email) {
-          console.log("user exist")
-          this.snackbar.open("patient already exist", 'OK')
-          // return this.policyFormData;
-        } else {
-          this.patients.push({ ...this.addPatient.value, id: new Date().getTime() })
-          this.shared.store(this.patients, 'patients', 'local')
-        }
-
-      })
-    }
-    else {
-      this.patients.push({ ...this.addPatient.value, id: new Date().getTime() })
-      this.shared.store(this.patients, 'patients', 'local')
-
-    }
 
   }
   update(): void {
     let existingPatients: any[] = this.shared.get('patients', 'local');
     existingPatients.forEach(((patient: any) => {
-      
+
       if (patient.id === this.data.id) {
-        console.log(patient.email +"&"+ this.addPatient.value.email)
+        console.log(patient.email + "&" + this.addPatient.value.email)
         patient.email = this.addPatient.value.email
         patient.fullName = this.addPatient.value.fullName
         this.shared.store(existingPatients, 'patients', 'local')
@@ -79,6 +70,10 @@ export class AddPatientComponent {
     this.matdialog.closeAll()
     this.matdialoRef.close()
 
+  }
+
+  close() {
+    this.matdialoRef.close()
   }
 
 }

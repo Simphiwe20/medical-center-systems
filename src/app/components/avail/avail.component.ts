@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DatePickerComponent } from '../Popups/date-picker/date-picker.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,6 +10,7 @@ import { scheduled } from 'rxjs';
 import { rejectReasonComponent } from '../Popups/rejectReason/rejectReason.component';
 import { EmailService } from 'src/app/services/email.service';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { TimeComponent } from '../Popups/time/time.component';
 
 @Component({
   selector: 'app-avail',
@@ -24,6 +25,8 @@ export class AvailComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  rejectedSchedule: any;
+  approvedSchedules: any[] = []
   docSchedule: any;
   availDays: any;
   days: any = [{ day: 'Sunday', startTime: '', endTime: '' }, { day: 'Monday', startTime: '', endTime: '' }, { day: 'Tuesday', startTime: '', endTime: '' },
@@ -33,6 +36,9 @@ export class AvailComponent {
 
   constructor(private userInfor: UserInfoService, private matdialog: MatDialog, private api: ApiServiceService,
     private sharedService: SharedServiceService, private emailServ: EmailService) {
+
+
+    this.rejectedSchedule = this.userInfor.get('rejectedSchedule', 'local')
 
     this.user = this.userInfor.get('currentUser', 'session')
 
@@ -47,7 +53,7 @@ export class AvailComponent {
 
   updateSchedule() {
     this.docSchedule = this.userInfor.get('schedules', 'local')
-    this.docSchedule = this.docSchedule.filter((schedule: any) => schedule.email === this.user.email)
+    this.docSchedule = this.docSchedule.filter((schedule: any) => schedule.doctorEmail === this.user.email)
 
     console.log(this.docSchedule)
     // Assign the data to the data source for the table to render
@@ -80,10 +86,32 @@ export class AvailComponent {
       })
   }
 
-  approveApp() {
+  approveApp(el: any) {
+
+    this.api.genericPost('/approvedFeedBack', el)
+      .subscribe({
+        next: (res) => { console.log(res) },
+        error: (err) => console.log(err),
+        complete: () => { }
+      })
+
+      el['status'] = 'Approved'
+
+      this.approvedSchedules.push(el)
+
+    // let schedules = this.userInfor.get('schedules', 'local').forEach((schedule: any) => {
+    //   if(schedule.id === el.id) {
+    //     schedule['status'] = 'Approved'
+    //   }
+    //   return schedule
+    // })
+
+    // this.userInfor.store(schedules, 'schedules', 'local')
+    this.userInfor.store(this.approvedSchedules, 'approvedSchedules', 'local')
+
+    this.dataSource = this.userInfor.get('schedules', 'local').filter((schedule: any) => schedule.id !== el.id)
 
   }
-
 
   rejectApp(el: any) {
     let MatDialogRef = this.matdialog.open(rejectReasonComponent)
@@ -94,13 +122,17 @@ export class AvailComponent {
             console.log(res)
             this.api.genericPost('/sendFeedback', el)
               .subscribe({
-                next: (res) => {console.log(res)},
+                next: (res) => { console.log(res) },
                 error: (err) => console.log(err),
-                complete: () => {}
+                complete: () => { }
               })
+            el['status'] = 'Rejected'
+            // this.rejectedSchedule.el()
             let schedules = this.userInfor.get('schedules', 'local').filter((day: any) => day.id !== el.id)
-            this.userInfor.store(schedules, 'schedules', 'local')
-            this.updateSchedule()
+            // this.userInfor.store(schedules, 'schedules', 'local')
+            // this.updateSchedule()
+            this.dataSource = schedules
+            console.log(el)
           }
         },
         error: () => { },

@@ -38,12 +38,12 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                         <td mat-cell *matCellDef="let row" class="flex gap05">
                             <div class="example-button-container">
-                                <button mat-mini-fab color="primary" matTooltip="Approve appointment">
+                                <button (click)="approveApp(row)" class="btn" mat-mini-fab color="primary" matTooltip="Approve appointment">
                                   <mat-icon>done</mat-icon>
                                 </button>
                               </div>
                               <div class="example-button-container">
-                                <button mat-mini-fab color="primary" (click)="rejectApp(row)" matTooltip="Reject appointment">
+                                <button class="btn" mat-mini-fab color="primary" (click)="rejectApp(row)" matTooltip="Reject appointment">
                                   <mat-icon>close</mat-icon>
                                 </button>
                               </div>
