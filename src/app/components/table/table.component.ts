@@ -83,8 +83,15 @@ export class TableComponent implements OnChanges {
   }
 
   patient(): void {
+
     console.log("patient function is called");
-    this.matDialog.open(AddPatientComponent)
+    let dialogRef = this.matDialog.open(AddPatientComponent)
+    dialogRef.afterClosed()
+      .subscribe({
+        next: (res) => {
+          this.dataSource = this.userInfor.get('patients', 'local')
+        }
+      })
   }
   User(event: any): void {
 
@@ -135,6 +142,14 @@ export class TableComponent implements OnChanges {
           this.mynew.forEach((user: any) => {
             
           })
+          // users.forEach((_user: any) => {
+          //   this.api.genericPost('/sendPassword', _user)
+          //   .subscribe({
+          //     next: (res) => {console.log(res)},
+          //     error: (err) => {console.log(err)},
+          //     complete: () => {}
+          //   })
+          // })
           users.forEach((_user: any) => {
             this.api.genericPost('/sendPassword', _user)
             .subscribe({
