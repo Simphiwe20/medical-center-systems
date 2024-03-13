@@ -24,17 +24,17 @@
                     <div class="DocInfo" >
                         <div class="docName" >
                             <p>{{datas.fullName | titlecase}}</p>
-                            <p>MBBS, DMRD</p>
+                            <p>{{datas.qualification}}</p>
                         </div>
                         <div class="docDetail flex row gap1em">
                             <div class="designation flex column gap05em">
                                 <small class="title">Designation</small>
-                                <small>Senior Specialist</small>
+                                <small>{{datas.designation}}</small>
                             </div>
                             <div class="lineBetween"></div>
                             <div class="experience flex column gap05em">
                                 <small class="title">Experience</small>
-                                <small>10+ years</small>
+                                <small>{{datas.experience}}</small>
                             </div>
                         </div>
                     </div>

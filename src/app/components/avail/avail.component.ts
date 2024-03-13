@@ -11,6 +11,7 @@ import { rejectReasonComponent } from '../Popups/rejectReason/rejectReason.compo
 import { EmailService } from 'src/app/services/email.service';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { TimeComponent } from '../Popups/time/time.component';
+import { Schedule } from '@syncfusion/ej2-angular-schedule';
 
 @Component({
   selector: 'app-avail',
@@ -38,7 +39,7 @@ export class AvailComponent {
     private sharedService: SharedServiceService, private emailServ: EmailService) {
 
 
-    this.rejectedSchedule = this.userInfor.get('rejectedSchedule', 'local')
+    this.docSchedule = this.userInfor.get('schedules', 'local')
 
     this.user = this.userInfor.get('currentUser', 'session')
 
@@ -53,7 +54,7 @@ export class AvailComponent {
 
   updateSchedule() {
     this.docSchedule = this.userInfor.get('schedules', 'local')
-    this.docSchedule = this.docSchedule.filter((schedule: any) => schedule.doctorEmail === this.user.email)
+    this.docSchedule = this.docSchedule.filter((schedule: any) => schedule.doctorEmail === this.user.email && schedule.status === 'Pending')
 
     console.log(this.docSchedule)
     // Assign the data to the data source for the table to render
@@ -95,21 +96,17 @@ export class AvailComponent {
         complete: () => { }
       })
 
-      el['status'] = 'Approved'
 
-      this.approvedSchedules.push(el)
+    this.docSchedule.forEach((schedule: any, indx: number) => {
+      if (schedule.id === el.id) {
+        schedule.status = 'Approved'
+      }
+    })
 
-    // let schedules = this.userInfor.get('schedules', 'local').forEach((schedule: any) => {
-    //   if(schedule.id === el.id) {
-    //     schedule['status'] = 'Approved'
-    //   }
-    //   return schedule
-    // })
+    this.userInfor.store(this.docSchedule, 'schedules', 'local')
+    console.log(this.docSchedule)
 
-    // this.userInfor.store(schedules, 'schedules', 'local')
-    this.userInfor.store(this.approvedSchedules, 'approvedSchedules', 'local')
-
-    this.dataSource = this.userInfor.get('schedules', 'local').filter((schedule: any) => schedule.id !== el.id)
+    this.updateSchedule()
 
   }
 
@@ -126,13 +123,22 @@ export class AvailComponent {
                 error: (err) => console.log(err),
                 complete: () => { }
               })
-            el['status'] = 'Rejected'
-            // this.rejectedSchedule.el()
-            let schedules = this.userInfor.get('schedules', 'local').filter((day: any) => day.id !== el.id)
-            // this.userInfor.store(schedules, 'schedules', 'local')
-            // this.updateSchedule()
-            this.dataSource = schedules
+
+
+            this.docSchedule.forEach((schedule: any) => {
+              if (schedule.id === el.id) {
+                schedule.status = 'Rejected'
+              }
+            })
+
+            this.userInfor.store(this.docSchedule, 'schedules', 'local')
+            console.log(this.docSchedule)
+
+            this.updateSchedule()
+          
+            // this.dataSource = schedules
             console.log(el)
+
           }
         },
         error: () => { },

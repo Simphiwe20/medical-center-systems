@@ -31,6 +31,7 @@ export class SharedServiceService {
 
   getAvail(doc: any): any {
     this.availDoc =  doc
+    return doc
   }
 
   getMonth(): any {

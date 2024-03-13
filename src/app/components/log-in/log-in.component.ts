@@ -29,6 +29,7 @@ export class LogInComponent {
         address: null,
         password: 'admin@12'
       }], 'users', 'local')
+      
     }
 
     this.loginForm = new FormGroup({

@@ -36,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TimeComponent } from './components/Popups/time/time.component';
 import { TodayTableComponent } from './components/Popups/today-table/today-table.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ConfirmComponent } from './components/Popups/confirm/confirm.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     rejectReasonComponent,
     TimeComponent,
     TodayTableComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConfirmComponent
 
   ],
   imports: [
