@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserInfoService } from 'src/app/services/user-info.service';
+import { ConfirmComponent } from '../confirm/confirm.component';
 
 @Component({
   selector: 'app-details',
@@ -93,13 +94,30 @@ export class DetailsComponent {
       this.localDetails.store(this.localPatients, 'patients', 'local')
     }
     console.log(data)
-    this.localData = this.localData.filter((item: any) => item.email !== data.email)
-    console.log(this.localData)
-    this.localDetails.store(this.localData, 'users', 'local')
-    this.snackbar.open("user has been deleted successfully", "OK")
-    this.matdialogRef.close()
+    let dialogRef = this.matDialog.open(ConfirmComponent)
+    dialogRef.afterClosed()
+      .subscribe({
+        next: (res) => {
+          console.log(res)
+          if (res.data == 1) {
+            console.log(res)
+            this.localData = this.localData.filter((item: any) => item.email !== data.email)
+            console.log(this.localData)
+            this.localDetails.store(this.localData, 'users', 'local')
+            this.snackbar.open("user has been deleted successfully", "OK")
+            this.matdialogRef.close()
+          } else {
+            this.snackbar.open("user deletion has been  cancelled", "OK", {duration: 3000})
+            
+          }
+
+        },
+        error: () => { },
+        complete: () => { }
+      })
+
   }
-  
+
   edit(received: any) {
     this.matDialog.open(AddPatientComponent, { data: received })
   }

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 // import { scheduler } from 'dhtmlx-scheduler';
 import { scheduler } from 'dhtmlx-scheduler';
 import * as Papa from 'papaparse'
@@ -19,12 +20,13 @@ interface CsvEvent {
 export class SchedulesComponent implements OnInit {
   @ViewChild('scheduler_here', { static: true }) schedulerContainer!: ElementRef;
   doc!: any;
+  availDoc: any
 
-  constructor(private sharedServ: SharedServiceService) {
+  constructor(private sharedServ: SharedServiceService, private route: ActivatedRoute) {
 
     setTimeout(() => {
       this.doc = this.sharedServ.availDoc
-    }, 5000)
+    }, 10000)
     console.log(this.doc)
   }
 
@@ -47,6 +49,11 @@ export class SchedulesComponent implements OnInit {
       // { name: "Status", height: 40, map_to: "status", type: "textarea", default_value: 'Pending',  },
       { name: "time", height: 72, type: "time", map_to: "auto", color: 'yellow' }
     ];
+
+    
+    this.route.queryParams.subscribe(params => {
+      this.availDoc = params['data']
+    })
 
     const date = new Date()
 
@@ -78,6 +85,7 @@ export class SchedulesComponent implements OnInit {
         event['doctorEmail'] = this.doc.doctorEmail
 
       this.events.push(event);
+      console.log(this.availDoc)
       console.log(this.events)
       localStorage.setItem('schedules', JSON.stringify(this.events));
     });

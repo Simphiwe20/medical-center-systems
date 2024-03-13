@@ -1,0 +1,16 @@
+<div>
+    <form [formGroup]="confirmForm">
+        <div class="flex column gap-1">
+            <label>Are you sure, you want to delete this user ?</label>
+            <mat-radio-group formControlName="confirm" aria-label="Select an option">
+                <mat-radio-button value="1">Yes</mat-radio-button>
+                <mat-radio-button value="2">No</mat-radio-button>
+                <mat-error *ngIf="confirmForm.get('confirm')?.hasError('required')">
+                    <p>Please confirm your deletion</p>
+                </mat-error>
+            </mat-radio-group>
+
+            <button mat-raised-button (click)="save()">Save</button>
+        </div>
+    </form>
+</div>

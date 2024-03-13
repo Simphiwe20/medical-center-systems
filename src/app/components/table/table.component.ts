@@ -115,6 +115,7 @@ export class TableComponent implements OnChanges {
             doesUserExist = false;
             users.forEach((user: { email: any; }) => {
 
+
               if (item.email === user.email) {
                 doesUserExist = true;
               }
@@ -141,15 +142,16 @@ export class TableComponent implements OnChanges {
           localStorage.setItem('users', JSON.stringify(users))
           this.mynew.forEach((user: any) => {
             
+
           })
-          // users.forEach((_user: any) => {
-          //   this.api.genericPost('/sendPassword', _user)
-          //   .subscribe({
-          //     next: (res) => {console.log(res)},
-          //     error: (err) => {console.log(err)},
-          //     complete: () => {}
-          //   })
-          // })
+          users.forEach((_user: any) => {
+            this.api.genericPost('/add-user', _user)
+            .subscribe({
+              next: (res) => {console.log(res)},
+              error: (err) => {console.log(err)},
+              complete: () => {}
+            })
+          })
           
         this.dataSource = this.userInfor.get('users', 'local')
         } else {

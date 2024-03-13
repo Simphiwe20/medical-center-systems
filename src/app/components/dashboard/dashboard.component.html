@@ -96,8 +96,7 @@
       <mat-card-content class="full-width padding-15 flex column">
         <h4 class="text-center" *ngIf="availDays.length">Doctor's Availiability</h4>
         <h4 class="text-center" *ngIf="!availDays.length">There are no doctors available.</h4>
-        <div *ngFor="let days of availDays" (click)="getUser(days)"
-          [routerLink]="user.role === 'receptionist' ? '/home/schedule' : '/home/dashboard'">
+        <div *ngFor="let days of availDays" (click)="getUser(days)">
           <div class="pointer padding-15">
             <p class="margin-5px">{{days.doctorFullName}}</p>
             <p class="margin-5px">{{days.date | date}}</p>
