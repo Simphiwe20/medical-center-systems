@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
