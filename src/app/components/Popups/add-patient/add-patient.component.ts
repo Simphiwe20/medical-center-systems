@@ -80,6 +80,30 @@ export class AddPatientComponent {
 
   }
 
+  genGender(): any {
+    let ID = this.addPatient.controls['identityNO'].value
+    let genderNum = Number(ID.toString().substring(6, 10))
+    let female = genderNum >= 0 && genderNum <= 4999
+    let male = genderNum >= 5000 && genderNum <= 9999
+
+    console.log(ID)
+    if(female) {
+      console.log(Number(ID.toString().substring(6, 10)))
+      return 'Female'
+    }else if(male) {
+      console.log(Number(ID.toString().substring(6, 10)))
+      return 'Male'
+    }
+  }
+
+  getDOB(): any {
+    let ID = this.addPatient.controls['identityNO'].value
+    let dob = Number(ID.toString().substring(0, 6))
+    console.log(dob)
+    // console.log(date)
+
+  }
+
   close() {
     this.matdialoRef.close()
   }
