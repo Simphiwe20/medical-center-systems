@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 // import { scheduler } from 'dhtmlx-scheduler';
 import { scheduler } from 'dhtmlx-scheduler';
 import * as Papa from 'papaparse'
+import { ApiServiceService } from 'src/app/services/api-service.service';
 import { SharedServiceService } from 'src/app/services/shared-service.service';
 
 interface CsvEvent {
@@ -22,7 +23,8 @@ export class SchedulesComponent implements OnInit {
   doc!: any;
   availDoc: any
 
-  constructor(private sharedServ: SharedServiceService, private route: ActivatedRoute) {
+  constructor(private sharedServ: SharedServiceService, private route: ActivatedRoute,
+    private api: ApiServiceService) {
 
     setTimeout(() => {
       this.doc = this.sharedServ.availDoc
@@ -50,9 +52,10 @@ export class SchedulesComponent implements OnInit {
       { name: "time", height: 72, type: "time", map_to: "auto", color: 'yellow' }
     ];
 
-    
+
     this.route.queryParams.subscribe(params => {
-      this.availDoc = params['data']
+      this.availDoc = JSON.parse(params['data'])
+      console.log(this.availDoc)
     })
 
     const date = new Date()
@@ -80,14 +83,21 @@ export class SchedulesComponent implements OnInit {
 
     scheduler.attachEvent('onEventAdded', (id, event) => {
       event['status'] = 'Pending',
-        console.log(this.doc)
-      event['doctorName'] = this.doc.doctorFullName,
-        event['doctorEmail'] = this.doc.doctorEmail
+      console.log(this.doc)
+      console.log(this.availDoc)
+      event['doctorName'] = this.availDoc.doctorFullName,
+      event['doctorEmail'] = this.availDoc.doctorEmail
 
       this.events.push(event);
       console.log(this.availDoc)
       console.log(this.events)
       localStorage.setItem('schedules', JSON.stringify(this.events));
+      this.api.genericPost('/add-schedule', event)
+        .subscribe({
+          next: (res) => {console.log(res)},
+          error: (err) => {console.log(err)},
+          complete: () => {}
+        })
     });
   }
 

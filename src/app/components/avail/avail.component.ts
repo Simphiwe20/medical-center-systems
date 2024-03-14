@@ -34,6 +34,8 @@ export class AvailComponent {
   { day: 'Wednesday', startTime: '', endTime: '' }, { day: 'Thursday', startTime: '', endTime: '' }, { day: 'Friday', startTime: '', endTime: '' }, { day: 'Sartuday', startTime: '', endTime: '' }]
   newDays: any;
   user: any;
+  pendingSchedule: any
+
 
   constructor(private userInfor: UserInfoService, private matdialog: MatDialog, private api: ApiServiceService,
     private sharedService: SharedServiceService, private emailServ: EmailService) {
@@ -53,12 +55,12 @@ export class AvailComponent {
   }
 
   updateSchedule() {
-    this.docSchedule = this.userInfor.get('schedules', 'local')
-    this.docSchedule = this.docSchedule.filter((schedule: any) => schedule.doctorEmail === this.user.email && schedule.status === 'Pending')
+    this.pendingSchedule = this.userInfor.get('schedules', 'local')
+    this.pendingSchedule = this.pendingSchedule.filter((schedule: any) => schedule.doctorEmail === this.user.email && schedule.status === 'Pending')
 
-    console.log(this.docSchedule)
+    console.log(this.pendingSchedule)
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.docSchedule);
+    this.dataSource = new MatTableDataSource(this.pendingSchedule);
   }
 
   ngAfterViewInit() {
@@ -104,6 +106,14 @@ export class AvailComponent {
     })
 
     this.userInfor.store(this.docSchedule, 'schedules', 'local')
+
+    this.api.genericUpdate('/update-status', el)
+      .subscribe({
+        next: (res) => { console.log(res) },
+        error: (err) => { console.log(err) },
+        complete: () => { }
+      })
+
     console.log(this.docSchedule)
 
     this.updateSchedule()
@@ -134,8 +144,15 @@ export class AvailComponent {
             this.userInfor.store(this.docSchedule, 'schedules', 'local')
             console.log(this.docSchedule)
 
+            this.api.genericPost('/update-status', this.docSchedule)
+              .subscribe({
+                next: (res) => { console.log(res) },
+                error: (err) => { console.log(err) },
+                complete: () => { }
+              })
+
             this.updateSchedule()
-          
+
             // this.dataSource = schedules
             console.log(el)
 

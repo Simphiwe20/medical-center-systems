@@ -83,11 +83,10 @@ export class DashboardComponent {
   }
 
   getUser(doc: any): any {
-    let availDoc = this.shared.getAvail(doc)
+    // let availDoc = this.shared.getAvail(doc)
     if(this.user.role === 'receptionist') {
-      this.router.navigate(['/home/schedule', {queryParams: {data: availDoc}}])
-      console.log(availDoc)
+      this.router.navigate(['/home/schedule'], {queryParams: {data: JSON.stringify(this.shared.getAvail(doc))}})
+      console.log(this.shared.getAvail(doc))
     }
-
   }
 }

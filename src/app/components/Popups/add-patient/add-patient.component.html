@@ -1,4 +1,3 @@
-
 <mat-card class="main-container">
     <form [formGroup]="addPatient">
         <div>
@@ -18,7 +17,8 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName="email" placeholder="Ex. lesetjamaluleka@gmail.com" required>
+                <input type="email" matInput formControlName="email" placeholder="Ex. lesetjamaluleka@gmail.com"
+                    required>
                 <mat-error *ngIf="addPatient.get('email')?.hasError('required')">
                     Please enter a valid email address
                 </mat-error>
@@ -27,37 +27,38 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>Gender</mat-label>
-                <mat-select formControlName="gender">
-                    <mat-option value="Male">Male</mat-option>
-                    <mat-option value="Female">Female</mat-option>
-                </mat-select >
+            <mat-form-field class="example-full-width">
+                <mat-label>ID number</mat-label>
+                <input type="number" (keyup)="genGender(); getDOB()" matInput formControlName="identityNO" placeholder="9801115169080" required>
+                <mat-error *ngIf="addPatient.get('identityNO')?.hasError('required')">
+                    ID number is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="addPatient.get('identityNO')?.hasError('maxlength')">
+                    ID number Should have 13 numbers
+                </mat-error>
+                <mat-error *ngIf="addPatient.get('identityNO')?.hasError('minlength')">
+                    ID number Should have 13 numbers
+                </mat-error>
             </mat-form-field>
 
             <div class=" flex gap-1">
                 <mat-form-field class="example-full-width">
                     <mat-label>Date of Birth</mat-label>
-                    <input type="date" matInput formControlName="DOB" placeholder="YYYY-MM-DD" required>
+                    <input type="date" #date matInput formControlName="DOB" placeholder="YYYY-MM-DD" required>
                     <mat-error>
                         Email is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                    <mat-label>ID number</mat-label>
-                    <input type="number" matInput formControlName="identityNO" 
-                    placeholder="9801115169080" required>
-                    <mat-error *ngIf="addPatient.get('identityNO')?.hasError('required')">
-                        ID number is <strong>required</strong>
-                    </mat-error>
-                    <mat-error *ngIf="addPatient.get('identityNO')?.hasError('maxlength')">
-                        ID number Should have 13 numbers
-                    </mat-error>
-                    <mat-error *ngIf="addPatient.get('identityNO')?.hasError('minlength')">
-                        ID number Should have 13 numbers
-                    </mat-error>
+                <mat-form-field appearance="fill">
+                    <mat-label>Gender</mat-label>
+                    <!-- <mat-select formControlName="gender" [value]>
+                        <mat-option value="Male">Male</mat-option>
+                        <mat-option value="Female">Female</mat-option>
+                    </mat-select> -->
+                    <input type="text" [value]="genGender()" matInput formControlName="gender" placeholder="Male" required>
                 </mat-form-field>
+
             </div>
 
             <div class=" flex gap-1">
@@ -104,11 +105,12 @@
                     Contact details are <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-        
-        <div class="flex center-center gap-1 buttons">
-            <button mat-raised-button color="warn" (click)="close()">Cancel</button>
-            <button mat-raised-button (click)="isUpdate? update() :submit()" >{{isUpdate? "Update" : "Submit"}}</button>
-        </div>
+
+            <div class="flex center-center gap-1 buttons">
+                <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+                <button mat-raised-button (click)="isUpdate? update() :submit()">{{isUpdate? "Update" :
+                    "Submit"}}</button>
+            </div>
         </div>
 
     </form>

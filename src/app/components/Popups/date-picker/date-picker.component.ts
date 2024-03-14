@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddAvailComponent } from '../add-avail/add-avail.component';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-date-picker',
@@ -15,7 +16,8 @@ export class DatePickerComponent {
   currentDate: Date;
   user: any;
 
-  constructor(private dialogRef: MatDialogRef<DatePickerComponent>, private matDialog: MatDialog) {
+  constructor(private dialogRef: MatDialogRef<DatePickerComponent>, private matDialog: MatDialog,
+    private api: ApiServiceService) {
     this.dialogRef.disableClose = true
     this.availDates = localStorage.getItem('availDays')
     this.availDates = this.availDates ? JSON.parse(this.availDates) : []
@@ -50,6 +52,13 @@ export class DatePickerComponent {
             doctorEmail: this.user.email,
             availID: `avail-${Math.floor(Math.random() * (200 - 100 + 1) + 100)}`,
           })
+          let avail = { date: this.selected, day: this.getDay(this.selected.getDay()), hours: res.data, doctorFullName: this.user.fullName, doctorEmail: this.user.email, availID: `avail-${Math.floor(Math.random() * (200 - 100 + 1) + 100)}`}
+          this.api.genericPost('/add-availability', avail)
+            .subscribe({
+              next: (res) => {console.log(res)},
+              error: (err) => {console.log(err)},
+              complete: () => {}
+            })
           }
           
           console.log(this.availDates)
