@@ -46,9 +46,9 @@ export class DatePickerComponent {
             date: this.selected,
             day: this.getDay(this.selected.getDay()),
             hours: res.data,
-            doctorName: this.user.firstName + ' ' + this.user.lastName,
+            doctorFullName: this.user.fullName,
             doctorEmail: this.user.email,
-            availID: `avail-${Math.floor(Math.random() * (200 - 100 + 1) + 100)}`
+            availID: `avail-${Math.floor(Math.random() * (200 - 100 + 1) + 100)}`,
           })
           }
           

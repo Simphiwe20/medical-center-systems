@@ -38,34 +38,21 @@ export class AddPatientComponent {
       console.log("polulation", this.addPatient)
     }
 
+    this.patients = this.shared.get('patients', 'local')
   }
 
   submit() {
+      let foundPatient = this.patients.find((patient: any) => patient.email === this.addPatient.controls['email'].value)
+      if(foundPatient) {
+        this.snackbar.open('Patient already exists', 'OK', {duration: 3000})
+        return
+      }else {
+        this.patients.push(this.addPatient.value)
+        this.shared.store(this.patients, 'patients', 'local')
+  
+      }
+      this.matdialog.closeAll()
 
-    let existingPatients: any[] = this.shared.get('patients', 'local');
-    console.log(existingPatients);
-    if (existingPatients) {
-      existingPatients = existingPatients.map((element: any) => {
-        if (this.addPatient.value.email === element.email) {
-          console.log("user exist")
-          this.snackbar.open("patient already exist", 'OK')
-          // return this.policyFormData;
-        } else {
-          this.patients.push({ ...this.addPatient.value, id: new Date().getTime() })
-          this.shared.store(this.patients, 'patients', 'local')
-          this.matdialoRef.close()
-
-        }
-
-      })
-    }
-    else {
-      this.patients.push({ ...this.addPatient.value, id: new Date().getTime() })
-      console.log(this.patients)
-      this.shared.store(this.patients, 'patients', 'local')
-      this.matdialoRef.close()
-
-    }
 
   }
   update(): void {

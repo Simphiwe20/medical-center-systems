@@ -4,9 +4,9 @@
     <hr>
     <h4 class="no-margin">{{isAdmin? 'Users' : 'Patient'}} Details</h4>
     <div class="flex column gap-05">
-    <p><b>{{isAdmin? 'User' : 'Patient'}} FUll names : </b>{{details.fullName}}</p>
+    <p><b>{{isAdmin? 'User' : 'Patient'}} Full Names : </b>{{details.fullName}}</p>
     <p><b>{{isAdmin? 'User' : 'Patient'}} Gender :</b> {{details.gender}}</p>
-    <p><b>{{isAdmin? 'User' : 'Patient'}} IDENTITY NUMBER :</b> {{details.identityNO}}</p>
+    <p><b>{{isAdmin? 'User' : 'Patient'}} Identity Number :</b> {{details.identityNO}}</p>
     <p *ngIf="!isAdmin"><b>{{isAdmin? 'User' : 'Patient'}} Blood Group :</b> {{details.bloodGroup}}</p>
     <p><b>{{isAdmin? 'User' : 'Patient'}} Mobile Number :</b> {{details.contact}}</p>
     <p><b>{{isAdmin? 'User' : 'Patient'}} Email address :</b> {{details.email}}</p>

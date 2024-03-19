@@ -1,138 +1,115 @@
-<div class="flex column center-center full-height padding-1em">
 
-  <form [formGroup]="addPatient" class="full-width flex column gap">
-    <h3>New Patient</h3>
-    <hr class="full-width">
-    <div class="flex gap">
+<mat-card class="main-container">
+  <form [formGroup]="addPatient">
+      <div>
+          <h3 class="flex center-center">
+              Add Patient Form
+          </h3>
+      </div>
+      <div class="gap-1 flex column ">
 
-      <div class="flex gap column">
-        <mat-form-field class="full-width">
-          <mat-label>Full Name</mat-label>
-          <input type="text" matInput formControlName="fullName" placeholder="David Smith">
-          <mat-error *ngIf="addPatient.get('fullName')?.hasError('required')">
-            fullName is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="addPatient.get('fullName')?.hasError('minlength')">
-            Name should at least have more than 4 charectors
-          </mat-error>
-        </mat-form-field>
-        <div class="flex gap full-width">
-          <div>
-            <mat-form-field class="full-width">
-              <mat-label>ID number</mat-label>
-              <input type="number" matInput formControlName="id" placeholder="David Smith" maxlength="13">
-              <mat-error *ngIf="addPatient.get('id')?.hasError('required')">
-                ID number is <strong>required</strong>
+          <mat-form-field class="example-full-width">
+              <mat-label>Full Name</mat-label>
+              <input type="text" matInput formControlName="fullName" placeholder="Nicholas Maluleka" required>
+              <mat-error *ngIf="addPatient.get('fullName')?.hasError('required')">
+                  full name is <strong>required</strong>
               </mat-error>
-              <mat-error *ngIf="addPatient.get('id')?.hasError('minlength')">
-                ID should have 13 digits
-              </mat-error>
-            </mat-form-field>
-          </div>
+          </mat-form-field>
 
-          <div class="half-width">
-            <mat-form-field appearance="fill">
+          <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Ex. lesetjamaluleka@gmail.com" required>
+              <mat-error *ngIf="addPatient.get('email')?.hasError('required')">
+                  Please enter a valid email address
+              </mat-error>
+              <mat-error>
+                  Email is <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
               <mat-label>Gender</mat-label>
               <mat-select formControlName="gender">
-                <mat-option *ngFor="let gender of gender" [value]="gender" formArrayName="gender">
-                  {{gender}}
-                </mat-option>
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+              </mat-select >
+          </mat-form-field>
+
+          <div class=" flex gap-1">
+              <mat-form-field class="example-full-width">
+                  <mat-label>Date of Birth</mat-label>
+                  <input type="date" matInput formControlName="DOB" placeholder="YYYY-MM-DD" required>
+                  <mat-error>
+                      Email is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <mat-label>ID number</mat-label>
+                  <input type="number" matInput formControlName="identityNO" 
+                  placeholder="9801115169080" required>
+                  <mat-error *ngIf="addPatient.get('identityNO')?.hasError('required')">
+                      ID number is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="addPatient.get('identityNO')?.hasError('maxlength')">
+                      ID number Should have 13 numbers
+                  </mat-error>
+                  <mat-error *ngIf="addPatient.get('identityNO')?.hasError('minlength')">
+                      ID number Should have 13 numbers
+                  </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class=" flex gap-1">
+              <mat-form-field appearance="fill">
+                  <mat-label>Medical Aid</mat-label>
+                  <mat-select formControlName="medicalAid">
+                      <mat-option value="option1">Yes</mat-option>
+                      <mat-option value="option2">No</mat-option>
+                  </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" *ngIf="addPatient.get('medicalAid')?.value === 'option1'">
+                  <mat-label>Medical Aid number</mat-label>
+                  <input type="number" matInput formControlName="medicalAidNO" placeholder="43654743754" required>
+                  <mat-error>
+                      Medical Aid number is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" *ngIf="addPatient.get('medicalAid')?.value === 'option2'">
+                  <mat-label>Bank Card Number</mat-label>
+                  <input type="number" matInput formControlName="cardNO" placeholder="43654743754" required>
+                  <mat-error>
+                      Bank Card Number number is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+          </div>
+          <mat-form-field appearance="fill">
+              <mat-label>Blood Group</mat-label>
+              <mat-select formControlName="bloodGroup">
+                  <mat-option value="A">A</mat-option>
+                  <mat-option value="B">B</mat-option>
+                  <mat-option value="AB">AB</mat-option>
+                  <mat-option value="O">O</mat-option>
+                  <mat-option value="N/A">N/A</mat-option>
+
               </mat-select>
-              <mat-error *ngIf="addPatient.get('gender')?.hasError('required')">
-                Gender is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
+          </mat-form-field>
 
-          <div class="half-width">
-            <mat-form-field class="full-width" appearance="fill">
-              <mat-label>DOB</mat-label>
-              <input matInput formControlName="dob" [matDatepicker]="picker">
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-
-          </div>
-        </div>
-        <div class="flex gap full-width">
-          <div class="half-width">
-            <mat-form-field appearance="fill">
-              <mat-label>Bood Group</mat-label>
-              <mat-select formControlName="blood">
-                <mat-option *ngFor="let blood of bloodDrop" [value]="blood">{{blood}}</mat-option>
-              </mat-select>
-              <!-- <mat-error *ngIf="addPatient.get('blood')?.hasError('required')">
-                Blood type is <strong>required</strong>
-              </mat-error> -->
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Do you have Medical Aid?</mat-label>
-              <mat-select formControlName="medicalAid">
-                <mat-option *ngFor="let medicalAid  medicalAid" [value]="medicalAid">{{medicalAid}}</mat-option>
-              </mat-select>
-              <mat-error *ngIf="addPatient.get('medicalAid')?.hasError('required')">
-                Medical Aid is <strong>required</strong>
+          <mat-form-field class="example-full-width">
+              <mat-label>Contact</mat-label>
+              <input type="email" matInput formControlName="contact" placeholder="Ex. pat@example.com" required>
+              <mat-error>
+                  Contact details are <strong>required</strong>
               </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="half-width">
-            <mat-form-field class="full-width">
-              <mat-label>Cell Number</mat-label>
-              <mat-icon matSuffix>phone</mat-icon>
-              <input type="tel" matInput formControlName="cellNumber" placeholder="000-000-0000" maxlength="10">
-              <mat-error *ngIf="addPatient.get('cellNumber')?.hasError('required')">
-                Cell Number is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="addPatient.get('cellNumber')?.hasError('minlength')">
-                Cell Number should at least have 10 digits
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="flex gap full-width">
-
-          <div class="email">
-            <mat-form-field class="full-width">
-              <mat-label>Email</mat-label>
-              <mat-icon matSuffix>email</mat-icon>
-              <input type="email" matInput formControlName="email" placeholder="Dsmith@example.com">
-              <mat-error *ngIf="addPatient.get('email')?.hasError('required')">
-                Email is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="addPatient.get('email')?.hasError('pattern')">
-                Please enter a valid email address
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="email">
-            <mat-form-field class="full-width">
-              <mat-label>Address</mat-label>
-              <mat-icon matSuffix>home</mat-icon>
-              <input type="text" matInput placeholder="" formControlName="address">
-              <mat-error *ngIf="addPatient.get('address')?.hasError('required')">
-                Address is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        
-        </div>     
-        <!-- <mat-form-field class="full-width">
-          <mat-label>Symptoms</mat-label>
-          <textarea matInput placeholder="Patient Symptoms..." formControlName="symptoms"></textarea>
-          <mat-error *ngIf="addPatient.get('symptoms')?.hasError('required')">
-            Patient symptoms are <strong>required</strong>
-          </mat-error>
-        </mat-form-field> -->
+          </mat-form-field>
+      
+      <div class="flex center-center gap-1 buttons">
+          <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+          <button mat-raised-button (click)="isUpdate? update() :submit()" >{{isUpdate? "Update" : "Submit"}}</button>
+      </div>
       </div>
 
-    </div>
-
-    <div class="flex gap start-left full-width">
-      <button mat-raised-button class="cancel" (click)="close()">Cancel</button>
-      <button mat-raised-button class="submit" color="primary" (click)="submit()">Save</button>
-    </div>
   </form>
-</div>
+</mat-card>
