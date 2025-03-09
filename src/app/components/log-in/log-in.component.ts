@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserInfoService } from 'src/app/services/user-info.service';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 
 @Component({
@@ -15,11 +16,23 @@ export class LogInComponent {
 
   loginForm: FormGroup;
   user: any;
+  users: any;
 
-  constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private sharedService: UserInfoService, private router: Router, private snackBar: MatSnackBar,
+    private apiService: ApiServiceService
+  ) {
 
 
     this.user = this.sharedService.get('users', 'local')
+    this.apiService.genericGet("/users").subscribe({
+      next: (res) => {console.log("RES: ", res)
+        this.users = res
+      },
+      error: (err) => {console.log("err: ", err)},
+      complete: () => {}
+    })
+    console.log("this.users: ", this.users)
+
     if (!this.user.length) {
       this.sharedService.store([{
         fullName: 'Built-In Admin',
@@ -50,7 +63,7 @@ export class LogInComponent {
 
     if (this.loginForm.valid) {
       // Check if user exists
-      const foundUser = users.find((user: any) => user.email === this.loginForm.controls["email"].value);
+      const foundUser = this.users.find((user: any) => user.email === this.loginForm.controls["email"].value);
 
       this.sharedService.currentUser = '';
 

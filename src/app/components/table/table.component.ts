@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -17,7 +17,7 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
   styleUrls: ['./table.component.scss']
 })
 
-export class TableComponent implements OnChanges {
+export class TableComponent implements OnChanges, OnInit {
 
   @Input() tableData: any;
   spreadsheetData: any;
@@ -30,7 +30,8 @@ export class TableComponent implements OnChanges {
   new: any = [];
   mynew: any = [];
   currentUser!: any;
-  isToday:boolean=false;
+  isToday: boolean = false;
+  users: any
 
 
 
@@ -42,21 +43,30 @@ export class TableComponent implements OnChanges {
     let _usersD = sessionStorage.getItem('currentUser');
     const currentUser = _usersD ? JSON.parse(_usersD) : [];
 
-    console.log(currentUser.role)
-
     if (currentUser.role === 'doctor') {
       this.isDoctor = true;
     }
 
   }
 
+  ngOnInit(): void {
+    this.api.genericGet("/users").subscribe({
+      next: (res) => { 
+        this.users = res 
+        console.log("res: ", res )    
+      },
+      error: (err) => { console.log("ERR: ", err) },
+      complete: () => {}
+    })
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (this.tableData.title == 'Patient') {
       this.isPatient = true;
-    } else if(this.tableData.title == 'today'){
+    } else if (this.tableData.title == 'today') {
       this.isPatient = false;
       this.isToday = false
-    }else{
+    } else {
       this.isPatient = false
     }
     if (changes['tableData']) {
@@ -83,8 +93,6 @@ export class TableComponent implements OnChanges {
   }
 
   patient(): void {
-
-    console.log("patient function is called");
     let dialogRef = this.matDialog.open(AddPatientComponent)
     dialogRef.afterClosed()
       .subscribe({
@@ -93,6 +101,7 @@ export class TableComponent implements OnChanges {
         }
       })
   }
+  
   User(event: any): void {
 
     const selectedFile = event.target.files[0];
@@ -110,10 +119,10 @@ export class TableComponent implements OnChanges {
         let doesUserExist: boolean;
 
         console.log(users)
-        if (users.length > 0) {
+        if (this.users.length > 0) {
           this.spreadsheetData.forEach((item: any) => {
             doesUserExist = false;
-            users.forEach((user: { email: any; }) => {
+            this.users.forEach((user: { email: any; }) => {
 
 
               if (item.email === user.email) {
@@ -125,12 +134,12 @@ export class TableComponent implements OnChanges {
                 ...item,
                 password: this.userInfor.generatePwd(),
                 id: new Date().getTime()
-              })      
+              })
             }
           });
 
           this.mynew.forEach(((newUser: any) => {
-            users.push(newUser)
+            this.users.push(newUser)
             this.api.genericPost('/sendPassword', newUser)
               .subscribe({
                 next: (res) => { console.log(res) },
@@ -140,32 +149,29 @@ export class TableComponent implements OnChanges {
           }))
 
           localStorage.setItem('users', JSON.stringify(users))
-          this.mynew.forEach((user: any) => {
-            
 
-          })
-          users.forEach((_user: any) => {
+          this.users.forEach((_user: any) => {
             this.api.genericPost('/add-user', _user)
-            .subscribe({
-              next: (res) => {console.log(res)},
-              error: (err) => {console.log(err)},
-              complete: () => {}
-            })
+              .subscribe({
+                next: (res) => { console.log(res) },
+                error: (err) => { console.log(err) },
+                complete: () => { }
+              })
           })
-          
-        this.dataSource = this.userInfor.get('users', 'local')
+
+          // this.dataSource = this.userInfor.get('users', 'local')
         } else {
           localStorage.setItem('users', JSON.stringify(this.spreadsheetData))
         }
 
 
-  })
+      })
 
-}
+    }
   }
-details(receivedData: any): void {
-  console.log("recived data", receivedData)
+  details(receivedData: any): void {
+    console.log("recived data", receivedData)
     this.matDialog.open(DetailsComponent, { data: receivedData })
-}
+  }
 }
 
