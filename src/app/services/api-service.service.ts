@@ -15,6 +15,10 @@ export class ApiServiceService {
     return this.http.post(`${this.url}${endPoint}`, payload)
   }
 
+  genericGet(endPoint: string) {
+    return this.http.get(`${this.url}${endPoint}`)
+  }
+
   genericUpdate(endPoint: string, payload: any) {
     return this.http.put(`${this.url}${endPoint}`, payload)
   }
