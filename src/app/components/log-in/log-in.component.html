@@ -25,11 +25,11 @@
         <!-- buttons -->
         <p>Forgot <span routerLink="/forgotPassword" class="span"> password</span>?</p>
         <div class="buttons center">
-          <button mat-raised-button [disabled]="loginForm.invalid" (click)="submit()" color="primary">
-            Submit
-          </button>
           <button mat-raised-button (click)="resetForm()" color="warn">
             Cancel
+          </button>
+          <button mat-raised-button [disabled]="loginForm.invalid" (click)="submit()" color="primary">
+            Submit
           </button>
         </div>
       </form>
