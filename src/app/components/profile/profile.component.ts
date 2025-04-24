@@ -12,8 +12,6 @@ export class ProfileComponent {
 
   user:any
 
-
-
   constructor(private service:UserInfoService, private matDialog: MatDialog) {
     this.user = this.service.get('currentUser','session')
   }
